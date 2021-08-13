@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+//import nftReducer from '../features/nft/nftSlice';
 
 export const store = configureStore({
   reducer: {

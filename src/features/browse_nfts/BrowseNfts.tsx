@@ -58,14 +58,14 @@ export function BrowseNfts() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-      hello
+      hello/browse by category
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
             {nft.nftName}
             AddNFT
             <br/>
-            Upload image
+            image/link to view nft
             <br/>
             description
             <br/>
