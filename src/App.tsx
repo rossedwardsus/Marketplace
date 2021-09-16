@@ -3,12 +3,13 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Home } from './features/home/Home';
 
-import { BrowseNfts } from './features/nfts/BrowseNfts';
-import { ViewNFT } from './features/nfts/ViewNft';
-
-import { AddNFT } from './features/user_add_nft/AddNft';
-import { User } from './features/user_nfts/UserNfts';
 import { HeaderMenu } from './features/header_menu/HeaderMenu';
+
+import { BrowseNfts } from './features/browse_nfts/BrowseNfts';
+import { ViewNFT } from './features/view_nft/ViewNft';
+
+import { AddNFT } from './features/user/user_add_nft/AddNft';
+import { User } from './features/user/UserNfts';
 
 import Gallery from './Gallery_light_background.png';
 import Marketplace from './Marketplace_light_background.png';

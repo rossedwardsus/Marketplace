@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 /*import {
@@ -17,9 +16,8 @@ import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 
 
-export function ViewNFT() {
+export function BrowseNfts() {
   const [wasm, setWasm] = useState<any>({})
-  const { nftId } = useParams<any>();
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -60,31 +58,18 @@ export function ViewNFT() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-      hello/browse by category{nftId}
+      hello/browse by category
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
-            user
+            username
             <br/>
             {nft.nftName}
             <br/>
-            image/link to view nft on cardano explorer
+            <Link to={"/nts/1234"}>policyid</Link>
             <br/>
-            description
+            ipfs link
             <br/>
-            Category
-            <br/>
-            Transaction History
-            <br/>
-            Likes
-            <br/>
-            Rating
-            <br/>
-            Views
-            <br/>
-            Similar nfts
-            <br/>
-            Other nfts from this user
            </>
         )}
     </>
