@@ -13,6 +13,8 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
+import { Link, useParams } from "react-router-dom";
+
 export function Home() {
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -24,7 +26,19 @@ export function Home() {
     <>
         <br/>
           Home
-        
+          <br/>
+          What niftgen is.
+          <br/>
+          A few samples
+          <br/>
+          Exaplanationofhow touse niftgen
+          <br/>
+          <Link to={"/howto"}>How To</Link>
+          <br/>
+          <br/>
+          Also some users of niftgen
+          <br/>
+          <Link to={"/nfts/browse"}>Click here to browse</Link>
     </>
   );
 }

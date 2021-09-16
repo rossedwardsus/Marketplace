@@ -13,10 +13,10 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
+import { Link } from "react-router-dom";
 
 
-
-export function BrowseNfts() {
+export function BrowseNFTs() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -56,22 +56,25 @@ export function BrowseNfts() {
   return (
     <>
       <br/>
-      {"cardano" in window == false && <>please install nami</>}
-      <br/>
-      hello/browse by category
-        {[{nftName: "nftName"}].map((nft: any) =>
-          <>
-          <br/>
-            username
-            <br/>
-            {nft.nftName}
-            <br/>
-            <Link to={"/nts/1234"}>policyid</Link>
-            <br/>
-            ipfs link
-            <br/>
-           </>
-        )}
+        {"cardano" in window == false && <>please install nami</>}
+        <br/>
+        hello/browse by category
+        <br/>
+        <div style={{display: "grid", gridTemplateRows: "repeat(4, '100px')", gridTemplateColumns: "repeat(3, '1fr')"}}>
+          {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
+           <div style={{gridColumn: index+1 + "/" + index+1}}>
+                <br/>
+                  username{index+1}
+                  <br/>
+                  {nft.nftName}
+                  <br/>
+                  <Link to={"/nfts/1234"}>policyid</Link>
+                  <br/>
+                  ipfs link
+                  <br/>
+              </div>
+          )}
+      </div>
     </>
   );
 }

@@ -13,7 +13,7 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-import { Link, useParams } from "react-router-dom";
+
 
 
 export function BrowseNfts() {
@@ -62,14 +62,14 @@ export function BrowseNfts() {
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
-            username
-            <br/>
             {nft.nftName}
+            AddNFT
             <br/>
-            <Link to={"/nts/1234"}>policyid</Link>
+            image/link to view nft
             <br/>
-            ipfs link
+            description
             <br/>
+            Category
            </>
         )}
     </>

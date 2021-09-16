@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone'
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+//import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 /*import {
   decrement,
   increment,
@@ -12,7 +12,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+import { HeaderMenu } from '../../header_menu/HeaderMenu';
 
 import { Link, useParams } from "react-router-dom";
 import { useForm } from 'react-hook-form'
@@ -97,7 +97,7 @@ export function AddNFT() {
           <textarea></textarea>
           <br/>
           <br/>
-          Category
+          Categories
           <br/>
           <select>
             <option>Art</option>

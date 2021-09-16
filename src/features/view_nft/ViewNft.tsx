@@ -13,10 +13,10 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
+import { Link, useParams } from "react-router-dom";
 
 
-
-export function ViewNft() {
+export function ViewNFT() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -64,23 +64,26 @@ export function ViewNft() {
           <br/>
             {nft.nftName}
             <br/>
-            Username
             <br/>
-            AddNFT
+            Username
             <br/>
             image
             <br/>
             description
             <br/>
-            Category
             <br/>
-            Like nft
+            Categories
             <br/>
-            Make in query
             <br/>
-            Transaction history?
+            Like this nft/rate this nft
+            <br/>
+            Make an inquery
             <br/>
             Other users nfts
+            <br/>
+            Other nfts inthis cateogry
+            <br/>
+            <Link to={"/nfts/1234/buy"}>Buy</Link>
            </>
         )}
     </>

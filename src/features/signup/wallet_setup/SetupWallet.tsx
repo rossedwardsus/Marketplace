@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+//import { useAppSelector, useAppDispatch } from '../../app/hooks';
 /*import {
   decrement,
   increment,
@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+import { HeaderMenu } from '../../header_menu/HeaderMenu';
 
 
 

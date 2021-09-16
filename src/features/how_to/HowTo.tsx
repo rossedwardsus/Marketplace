@@ -13,10 +13,10 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-import { Link, useParams } from "react-router-dom";
 
 
-export function BrowseNfts() {
+
+export function HowTo() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -59,19 +59,8 @@ export function BrowseNfts() {
       {"cardano" in window == false && <>please install nami</>}
       <br/>
       hello/browse by category
-        {[{nftName: "nftName"}].map((nft: any) =>
-          <>
-          <br/>
-            username
-            <br/>
-            {nft.nftName}
-            <br/>
-            <Link to={"/nts/1234"}>policyid</Link>
-            <br/>
-            ipfs link
-            <br/>
-           </>
-        )}
+      <br/>
+      howto  
     </>
   );
 }

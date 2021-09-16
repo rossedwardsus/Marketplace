@@ -13,10 +13,10 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-import { Link, useParams } from "react-router-dom";
 
 
-export function BrowseNfts() {
+
+export function BuyNFT() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -58,17 +58,30 @@ export function BrowseNfts() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-      hello/browse by category
+      hello
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
-            username
+            Preview your purchase
+            <br/>
             <br/>
             {nft.nftName}
             <br/>
-            <Link to={"/nts/1234"}>policyid</Link>
+            cost
             <br/>
-            ipfs link
+            Username
+            <br/>
+            image
+            <br/>
+            description
+            <br/>
+            <br/>
+            Categories
+            <br/>
+            <br/>
+            Like this nft/rate this nft
+            <br/>
+            Make an inquery
             <br/>
            </>
         )}
