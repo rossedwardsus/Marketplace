@@ -15,6 +15,7 @@ import styles from './Counter.module.css';*/
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import { Link, useParams } from "react-router-dom";
+import { useForm } from 'react-hook-form'
 
 
 
@@ -27,6 +28,7 @@ export function AddNFT() {
 
   const params = useParams();
   const [fileAdded, setFileAdded] = useState<any>(false);
+
 
   //const onDrop = useCallback(acceptedFiles => {
     // Do something with the files

@@ -15,7 +15,8 @@ import { Link, useParams } from "react-router-dom";
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-export function UserNFTs() {
+export function User() {
+  const {userId} = useParams<any>();
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -45,8 +46,25 @@ export function UserNFTs() {
 
   return (
     <>
+        {userId}
+        <br/>
         Your Nfts
         <br/>
+        About me
+        <br/>
+        About my nfts
+        <br/>
+        Total number of nfts added
+        <br/>
+        Total views
+        <br/>
+        Total likes
+        <br/>
+        Nft Ranking
+        <br/>
+        My highest rated nfts
+        <br/>
+        My most viewed
         <br/>
          {[{id: 12345, userid: "", blockchain_public_address: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any) =>
           <>

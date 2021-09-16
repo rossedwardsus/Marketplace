@@ -2,9 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Home } from './features/home/Home';
+
 import { BrowseNfts } from './features/nfts/BrowseNfts';
+import { ViewNFT } from './features/nfts/ViewNft';
+
 import { AddNFT } from './features/user_add_nft/AddNft';
-import { UserNFTs } from './features/user_nfts/UserNfts';
+import { User } from './features/user_nfts/UserNfts';
 import { HeaderMenu } from './features/header_menu/HeaderMenu';
 
 import Gallery from './Gallery_light_background.png';
@@ -19,7 +22,7 @@ function App() {
      <Router>
          <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
             <HeaderMenu/>
-            <div style={{width: "30%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block", backgroundColor: "#3B5998"}}>
+            <div style={{width: "30%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               left menu
               <br/>
               <nav>
@@ -38,11 +41,11 @@ function App() {
               here
               <Switch>
                   <Route path="/home" exact component={Home} />
+                  <Route path="/nfts/:nftId" exact component={ViewNFT} />
                   <Route path="/nfts" exact component={BrowseNfts} />
                   <Route path="/user/nfts/new" exact component={AddNFT} />
-                  <Route path="/user/nfts" exact component={UserNFTs} />
-                  <Route path="/:username" exact component={AddNFT} />
-                </Switch>
+                  <Route path="/users/:username" exact component={User} />
+              </Switch>
               
             </div>
           </div>

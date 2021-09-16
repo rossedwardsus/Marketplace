@@ -64,23 +64,20 @@ export function BrowseNfts() {
       <Link to={"/user/nfts/new"}>AddNFT</Link>
       <br/>
       <br/>
-        {[{id: "", userid: "", blockchain_public_address: "", title: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any) =>
+      <br/>
+        {[{id: "", userid: "", blockchain_public_address: "", title: "", username: "usernamee", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
             {nft.nftName}
             <br/>
-            <Link to={"/" + nft.username}>{nft.username}</Link>
+            <Link to={"/users/" + nft.username}>{nft.username}</Link>
             <br/>
             <br/>
-            image/link to view nft
+            <Link to={"/nfts/12345"}>image/link to view nft</Link>
             <br/>
-            description
-            <br/>
-            Category
+            Categories
             <br/>
             Cost
-            <br/>
-            Purchase
             <br/>
             Rating
             <br/>

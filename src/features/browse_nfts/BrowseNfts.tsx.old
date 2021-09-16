@@ -58,27 +58,18 @@ export function BrowseNfts() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-      hello
+      hello/browse by category
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
+            username
+            <br/>
             {nft.nftName}
             <br/>
-            Username
+            <Link to={"/nts/1234"}>policyid</Link>
             <br/>
-            AddNFT
+            ipfs link
             <br/>
-            image
-            <br/>
-            description
-            <br/>
-            Category
-            <br/>
-            Like nft
-            <br/>
-            Make in query
-            <br/>
-            Transaction history?
            </>
         )}
     </>

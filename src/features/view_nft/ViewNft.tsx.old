@@ -16,7 +16,7 @@ import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 
 
-export function BrowseNfts() {
+export function ViewNft() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -58,18 +58,29 @@ export function BrowseNfts() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-      hello/browse by category
+      hello
         {[{nftName: "nftName"}].map((nft: any) =>
           <>
           <br/>
             {nft.nftName}
+            <br/>
+            Username
+            <br/>
             AddNFT
             <br/>
-            image/link to view nft
+            image
             <br/>
             description
             <br/>
             Category
+            <br/>
+            Like nft
+            <br/>
+            Make in query
+            <br/>
+            Transaction history?
+            <br/>
+            Other users nfts
            </>
         )}
     </>
