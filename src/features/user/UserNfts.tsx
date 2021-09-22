@@ -54,6 +54,10 @@ export function User() {
         <br/>
         About my nfts
         <br/>
+        pinned nfts
+        <br/>
+        albums
+        <br/>
         Total number of nfts added
         <br/>
         Total views

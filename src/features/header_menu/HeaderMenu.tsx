@@ -22,7 +22,7 @@ export function HeaderMenu() {
 
   return (
     <div style={{width: "100%", height: "10%"}}>
-          Loggedin/logged out/localStorage.getItem() - Header Menu/<Link to={"/user/nfts/new"}>Add Nft</Link>/<Link to={"/user/nfts"}>My Nfts</Link>/<Link to={"/nft/browse"}>browse-nfts</Link>/signiup/wallet setup/feed
+          Loggedin/logged out/localStorage.getItem() - Header Menu/<Link to={"/user/nfts/new"}>Add Nft</Link>/<Link to={"/user/nfts"}>My Nfts</Link>/<Link to={"/nft/browse"}>browse-nfts</Link><Link to="/signup">Signup</Link><Link to="/user/wallet">wallet setup</Link><Link to="/user/settings">Settings</Link>/feed
     </div>
   );
 }

@@ -16,7 +16,7 @@ import { HeaderMenu } from '../header_menu/HeaderMenu';
 import { Link } from "react-router-dom";
 
 
-export function BrowseNFTs() {
+export function PublicFeedNFTs() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -60,11 +60,22 @@ export function BrowseNFTs() {
         <br/>
         hello/browse by category
         <br/>
-        <div style={{display: "grid", gridTemplateRows: "repeat(4, '100px')", gridTemplateColumns: "repeat(3, '1fr')"}}>
-          {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
-           <div style={{gridColumn: index+1 + "/" + index+1}}>
+        sports/art
+        <br/>
+        <br/>
+        filter by for sale or not
+        <br/>
+        <select>
+          <option>All NFTs</option>
+          <option>NFTs Fr SALE</option>
+          <option>Just Being Collected</option>
+        </select>
+        <div>
+         {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
+           <div>
                 <br/>
-                  username{index+1}
+                  <br/>
+                  <Link to="/users/1234">username{index+1}</Link>
                   <br/>
                   {nft.nftName}
                   <br/>
@@ -72,9 +83,22 @@ export function BrowseNFTs() {
                   <br/>
                   ipfs link
                   <br/>
+                  rating
+                  <br/>
+                  Comments
+                  <br/>
+                  view
+                  <br/>
+                  share
+                  <br/>
+                  <br/>
               </div>
           )}
       </div>
     </>
   );
 }
+
+//<div style={{display: "grid", gridTemplateRows: "repeat(4, '100px')", gridTemplateColumns: "repeat(3, '1fr')"}}>
+//<div style={{gridColumn: index+1 + "/" + index+1}}>
+           
