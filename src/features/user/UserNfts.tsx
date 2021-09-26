@@ -48,27 +48,14 @@ export function User() {
     <>
         {userId}
         <br/>
-        Your Nfts
+        Edit profile
         <br/>
-        About me
+        Notifications
         <br/>
-        About my nfts
+        Chats
         <br/>
-        pinned nfts
+        User1
         <br/>
-        albums
-        <br/>
-        Total number of nfts added
-        <br/>
-        Total views
-        <br/>
-        Total likes
-        <br/>
-        Nft Ranking
-        <br/>
-        My highest rated nfts
-        <br/>
-        My most viewed
         <br/>
          {[{id: 12345, userid: "", blockchain_public_address: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any) =>
           <>

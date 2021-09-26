@@ -3,6 +3,14 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Home } from './features/home/Home';
 
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
 import { HeaderMenu } from './features/header_menu/HeaderMenu';
 
 import { PublicFeedNFTs } from './features/browse_nfts/PublicFeedNFTs';
@@ -27,10 +35,28 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 function App() {
   return (
      <Router>
+         <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Niftgen
+              </Typography>
+              <Link to="/nfts/browse">Public Feed</Link>
+              <Button color="inherit">User Feed</Button>
+              <Button color="inherit">Signin</Button>
+            </Toolbar>
+          </AppBar>
+        
          <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
-            <HeaderMenu/>
-            <div style={{width: "30%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
-              left menu
+            <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               <br/>
               <nav>
                 <ul>
@@ -38,11 +64,6 @@ function App() {
                 </ul>
               </nav>
               <br/>
-              <a href="/user/nfts"><img height="5%" width="5%" src={Gallery}/></a><Link to="/user/nfts" style={{color: "#000000", textDecoration: "none"}}>User Nfts</Link>
-              <br/>
-              <a href="/nfts/browse"><img height="5%" width="5%" src={Gallery}/></a><Link to="/nfts/browse" style={{color: "#000000", textDecoration: "none"}}>Browse Nfts</Link>
-              <br/>
-              <a href="/marketplace"><img height="5%" width="5%" src={Marketplace}/></a><Link to="/Marketplace" style={{color: "#000000", textDecoration: "none"}}>Marketplace</Link>
             </div>
             <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
               here

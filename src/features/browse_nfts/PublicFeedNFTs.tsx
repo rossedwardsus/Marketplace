@@ -13,7 +13,37 @@ import styles from './Counter.module.css';*/
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Box from '@mui/material/Box';
+
+
 import { Link } from "react-router-dom";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 
 export function PublicFeedNFTs() {
@@ -40,6 +70,10 @@ export function PublicFeedNFTs() {
 
   //}
 
+  const handleChange = (event: any) => {
+    //setAge(event.target.value);
+  };
+
   useEffect(() => {
 
       loadWasm();
@@ -56,12 +90,26 @@ export function PublicFeedNFTs() {
   return (
     <>
       <br/>
-        {"cardano" in window == false && <>please install nami</>}
+        {"algorand" in window == false && <>please install algorand wallet</>}
         <br/>
         hello/browse by category
         <br/>
         sports/art
         <br/>
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Item>Art</Item>
+          </Grid>
+          <Grid item xs={2}>
+            <Item>Sports</Item>
+          </Grid>
+          <Grid item xs={2}>
+            <Item>xs=4</Item>
+          </Grid>
+          <Grid item xs={2}>
+            <Item>xs=8</Item>
+          </Grid>
+        </Grid>
         <br/>
         filter by for sale or not
         <br/>
@@ -70,29 +118,79 @@ export function PublicFeedNFTs() {
           <option>NFTs Fr SALE</option>
           <option>Just Being Collected</option>
         </select>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={"age"}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>All</MenuItem>
+            <MenuItem value={20}>For Sale</MenuItem>
+            <MenuItem value={30}>Being Collected</MenuItem>
+          </Select>
+        </FormControl>
         <div>
          {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
-           <div>
+           <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <br/>
+                <Card sx={{ display: 'flex' }}>
                   <br/>
-                  <Link to="/users/1234">username{index+1}</Link>
+                  <CardMedia
+                      component="img"
+                      sx={{ width: 151 }}
+                      image="/static/images/cards/live-from-space.jpg"
+                      alt="NFT Image"
+                    />
+                 </Card>
+                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <CardContent sx={{ flex: '1 0 auto' }}>
+                      <Typography component="div" variant="h5">
+                        Nft Name<Link to="/users/1234">username{index+1}</Link>
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                        Username
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                        IPFS Address
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                        Aseet ID
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                        Message
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                        For Sale/Collected
+                      </Typography>
+                    </CardContent>
+                   
+                  </Box>
+
+                  
                   <br/>
                   {nft.nftName}
                   <br/>
-                  <Link to={"/nfts/1234"}>policyid</Link>
+                  <Link to={"/nfts/1234"}>algorand assetidid</Link>
                   <br/>
+                  <img height="100" width="100"></img>
                   ipfs link
                   <br/>
-                  rating
+                  rating 5/5
                   <br/>
-                  Comments
+                  Comments 10
                   <br/>
-                  view
+                  views
                   <br/>
                   share
                   <br/>
+                  message
                   <br/>
-              </div>
+                  For sale
+                  <br/>
+            </Box>
           )}
       </div>
     </>
