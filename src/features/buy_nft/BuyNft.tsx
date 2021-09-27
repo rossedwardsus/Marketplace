@@ -83,6 +83,9 @@ export function BuyNFT() {
             <br/>
             Make an inquery
             <br/>
+            Cost
+            <br/>
+            Buy now
            </>
         )}
     </>

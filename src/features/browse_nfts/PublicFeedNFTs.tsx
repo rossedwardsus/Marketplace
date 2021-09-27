@@ -89,110 +89,139 @@ export function PublicFeedNFTs() {
 
   return (
     <>
-      <br/>
-        {"algorand" in window == false && <>please install algorand wallet</>}
-        <br/>
-        hello/browse by category
-        <br/>
-        sports/art
-        <br/>
-        <Grid container spacing={2}>
-          <Grid item xs={2}>
-            <Item>Art</Item>
-          </Grid>
-          <Grid item xs={2}>
-            <Item>Sports</Item>
-          </Grid>
-          <Grid item xs={2}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid item xs={2}>
-            <Item>xs=8</Item>
-          </Grid>
-        </Grid>
-        <br/>
-        filter by for sale or not
-        <br/>
-        <select>
-          <option>All NFTs</option>
-          <option>NFTs Fr SALE</option>
-          <option>Just Being Collected</option>
-        </select>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={"age"}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>All</MenuItem>
-            <MenuItem value={20}>For Sale</MenuItem>
-            <MenuItem value={30}>Being Collected</MenuItem>
-          </Select>
-        </FormControl>
-        <div>
-         {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
-           <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                <br/>
-                <Card sx={{ display: 'flex' }}>
-                  <br/>
-                  <CardMedia
-                      component="img"
-                      sx={{ width: 151 }}
-                      image="/static/images/cards/live-from-space.jpg"
-                      alt="NFT Image"
-                    />
-                 </Card>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography component="div" variant="h5">
-                        Nft Name<Link to="/users/1234">username{index+1}</Link>
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
-                        Username
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
-                        IPFS Address
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
-                        Aseet ID
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
-                        Message
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
-                        For Sale/Collected
-                      </Typography>
-                    </CardContent>
-                   
-                  </Box>
+      <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+          <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
+            <br/>
+            <nav>
+              <ul>
+                <li><Link to="/home">Settings</Link></li>
+              </ul>
+              <ul>
+                <li><Link to="/home">Notifications</Link></li>
+              </ul>
+              <ul>
+                <li><Link to="/home">My NFT</Link></li>
+              </ul>
+              <ul>
+                <li><Link to="/home">Add NFT</Link></li>
+              </ul>
+              <ul>
+                <li><Link to="/home">Chats user 1</Link></li>
+              </ul>
+              <ul>
+                <li><Link to="/home">Chats user 2</Link></li>
+              </ul>
+            </nav>
+            <br/>
+          </div>
+          <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
+         
+          <br/>
+            {"algorand" in window == false && <>please install algorand wallet</>}
+            <br/>
+            hello/browse by category
+            <br/>
+            sports/art
+            <br/>
+            <Grid container spacing={2}>
+              <Grid item xs={2}>
+                <Item>Art</Item>
+              </Grid>
+              <Grid item xs={2}>
+                <Item>Sports</Item>
+              </Grid>
+              <Grid item xs={2}>
+                <Item>xs=4</Item>
+              </Grid>
+              <Grid item xs={2}>
+                <Item>xs=8</Item>
+              </Grid>
+            </Grid>
+            <br/>
+            filter by for sale or not
+            <br/>
+            <select>
+              <option>All NFTs</option>
+              <option>NFTs Fr SALE</option>
+              <option>Just Being Collected</option>
+            </select>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={"age"}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>All</MenuItem>
+                <MenuItem value={20}>For Sale</MenuItem>
+                <MenuItem value={30}>Being Collected</MenuItem>
+              </Select>
+            </FormControl>
+            <div>
+             {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
+               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                    <br/>
+                    <Card sx={{ display: 'flex' }}>
+                      <br/>
+                      <CardMedia
+                          component="img"
+                          sx={{ width: 151 }}
+                          image="/static/images/cards/live-from-space.jpg"
+                          alt="NFT Image"
+                        />
+                     </Card>
+                      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography component="div" variant="h5">
+                            Nft Name<Link to="/nfts/1234">nft{index+1}</Link>
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            Username<Link to="/users/1234">username{index+1}</Link>
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            IPFS Address
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            Aseet ID
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            Message
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            For Sale/Collected
+                          </Typography>
+                        </CardContent>
+                       
+                      </Box>
 
-                  
-                  <br/>
-                  {nft.nftName}
-                  <br/>
-                  <Link to={"/nfts/1234"}>algorand assetidid</Link>
-                  <br/>
-                  <img height="100" width="100"></img>
-                  ipfs link
-                  <br/>
-                  rating 5/5
-                  <br/>
-                  Comments 10
-                  <br/>
-                  views
-                  <br/>
-                  share
-                  <br/>
-                  message
-                  <br/>
-                  For sale
-                  <br/>
-            </Box>
-          )}
-      </div>
+                      
+                      <br/>
+                      {nft.nftName}
+                      <br/>
+                      <Link to={"/nfts/1234"}>algorand assetidid</Link>
+                      <br/>
+                      <img height="100" width="100"></img>
+                      ipfs link
+                      <br/>
+                      rating 5/5
+                      <br/>
+                      Comments 10
+                      <br/>
+                      views
+                      <br/>
+                      share
+                      <br/>
+                      message
+                      <br/>
+                      For sale
+                      <br/>
+                </Box>
+              )}
+          </div>
+         </div>
+       </div>
     </>
   );
 }

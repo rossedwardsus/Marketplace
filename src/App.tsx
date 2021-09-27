@@ -21,9 +21,10 @@ import { Signup } from './features/signup/Signup';
 
 import { HowTo } from './features/how_to/HowTo';
 
-import { AddNFT } from './features/user/user_add_nft/AddNft';
-import { User } from './features/user/UserNfts';
+import { UserAddNFT } from './features/user/UserAddNFT';
+import { User } from './features/user/UserNFTs';
 import { UserSettings } from './features/user/UserSettings';
+import { UserNotifications } from './features/user/UserNotifications';
 
 import Gallery from './Gallery_light_background.png';
 import Marketplace from './Marketplace_light_background.png';
@@ -52,10 +53,11 @@ function App() {
               <Link to="/nfts/browse">Public Feed</Link>
               <Button color="inherit">User Feed</Button>
               <Button color="inherit">Signin</Button>
+              <Link to={"/user/nfts/add"} color="inherit" component={Button}>Add NFT</Link>
             </Toolbar>
           </AppBar>
         
-         <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+         <div style={{width: "100%", height: "160%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
             <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               <br/>
               <nav>
@@ -65,7 +67,7 @@ function App() {
               </nav>
               <br/>
             </div>
-            <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
+            <div style={{width: "79%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
               here
               <Switch>
                   <Route path="/" exact component={Home} />
@@ -75,7 +77,8 @@ function App() {
                   <Route path="/users/:username" exact component={User} />
                   <Route path="/howto" exact component={HowTo} />
                   <Route path="/signup" exact component={Signup} />
-                  <Route path="/user/nfts/new" exact component={AddNFT} />
+                  <Route path="/user/nfts/add" exact component={UserAddNFT} />
+                  <Route path="/user/notifications" exact component={UserNotifications} />
                   <Route path="/user/settings" exact component={UserSettings} />
               </Switch>
               
