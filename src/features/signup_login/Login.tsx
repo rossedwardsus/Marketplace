@@ -15,7 +15,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-export function Signup() {
+export function Login() {
   const {userId} = useParams<any>();
   const history = useHistory<any>();
   /*const count = useAppSelector(selectCount);

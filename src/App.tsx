@@ -15,9 +15,10 @@ import { HeaderMenu } from './features/header_menu/HeaderMenu';
 
 import { PublicFeedNFTs } from './features/browse_nfts/PublicFeedNFTs';
 import { ViewNFT } from './features/view_nft/ViewNft';
-import { BuyNFT } from './features/buy_nft/BuyNft';
+import { BuyNFT } from './features/buy_nft/BuyNFT';
 
-import { Signup } from './features/signup/Signup';
+import { Signup } from './features/signup_login/Signup';
+import { Login } from './features/signup_login/Login';
 
 import { HowTo } from './features/how_to/HowTo';
 
@@ -50,40 +51,29 @@ function App() {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Niftgen
               </Typography>
-              <Link to="/nfts/browse">Public Feed</Link>
-              <Button color="inherit">User Feed</Button>
-              <Button color="inherit">Signin</Button>
+              <Link to={"/nfts/browse"} color="inherit" component={Button}>Browse</Link>
+              <Link to={"/user/nfts"} color="inherit" component={Button}>User Home</Link>
+              <Link to={"/user/nfts/add"} color="inherit" component={Button}>Sign Up</Link>
               <Link to={"/user/nfts/add"} color="inherit" component={Button}>Add NFT</Link>
             </Toolbar>
           </AppBar>
         
-         <div style={{width: "100%", height: "160%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
-            <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
-              <br/>
-              <nav>
-                <ul>
-                  <li><Link to="/home">Home</Link></li>
-                </ul>
-              </nav>
-              <br/>
-            </div>
-            <div style={{width: "79%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
-              here
-              <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
-                  <Route path="/nfts/:nftId" exact component={ViewNFT} />
-                  <Route path="/nfts/:nftId/buy" exact component={BuyNFT} />
-                  <Route path="/users/:username" exact component={User} />
-                  <Route path="/howto" exact component={HowTo} />
-                  <Route path="/signup" exact component={Signup} />
-                  <Route path="/user/nfts/add" exact component={UserAddNFT} />
-                  <Route path="/user/notifications" exact component={UserNotifications} />
-                  <Route path="/user/settings" exact component={UserSettings} />
-              </Switch>
+         <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/signup" exact component={Signup} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/user/nfts/add" exact component={UserAddNFT} />
+              <Route path="/user/notifications" exact component={UserNotifications} />
+              <Route path="/user/settings" exact component={UserSettings} />
+              <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
+              <Route path="/nfts/browse/:category" exact component={PublicFeedNFTs} />
+              <Route path="/nfts/:nftId/buy" exact component={BuyNFT} />
+              <Route path="/nfts/:nftId" exact component={ViewNFT} />
+              <Route path="/users/:username" exact component={User} />
+              <Route path="/howto" exact component={HowTo} />
+          </Switch>
               
-            </div>
-          </div>
+      
      </Router>
   );
 }

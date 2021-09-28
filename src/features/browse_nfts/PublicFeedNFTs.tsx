@@ -20,6 +20,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -125,7 +126,7 @@ export function PublicFeedNFTs() {
             <br/>
             <Grid container spacing={2}>
               <Grid item xs={2}>
-                <Item>Art</Item>
+                <Link to="/nfts/browse/art" component={Button}>Art</Link> 
               </Grid>
               <Grid item xs={2}>
                 <Item>Sports</Item>

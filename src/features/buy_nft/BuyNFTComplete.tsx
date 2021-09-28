@@ -20,7 +20,7 @@ import FormControl from '@mui/material/FormControl';
 
 
 
-export function BuyNFT() {
+export function BuyNFTComplete() {
   const [wasm, setWasm] = useState<any>({})
 
   /*const count = useAppSelector(selectCount);
@@ -62,16 +62,7 @@ export function BuyNFT() {
       <br/>
       {"cardano" in window == false && <>please install nami</>}
       <br/>
-             Preview your purchase
-            <br/>
-            <br/>
-            nftName
-            <br/>
-            cost
-            <br/>
-            Have popup confirming cost including niftren fee witha procesd and cancel as well as authorizing the purchase with their wallet.
-            <br/>
-            <Button>Buy now</Button>
+      Your NFT should arrive in your wallet shortly.
     </>
   );
 }

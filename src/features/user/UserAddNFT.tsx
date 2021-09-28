@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   smDropzone: {
     maxHeight: 0,
     height: "0%",
-    width: 50
+    width: 500
   },
 });
 
@@ -48,6 +48,7 @@ export function UserAddNFT() {
   const classes = useStyles();
   const params = useParams();
   const [fileAdded, setFileAdded] = useState<any>(false);
+  const [description, setDescription] = useState<any>(false);
 
 
   //const onDrop = useCallback(acceptedFiles => {
@@ -87,16 +88,23 @@ export function UserAddNFT() {
 
   }, []);
 
-  const handleChange = (files: any) => {
+  const handleFileChange = (files: any) => {
     //this.setState({
     //  files: files
     //});
-    alert("here");
+    //alert("here");
+  }
+
+  const handleDescriptionChange = (e: any) => {
+
+    //alert(e.target.value);
+    setDescription(e.target.value);
+
   }
 
   return (
     <>
-        <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+        <div style={{width: "100%", height: "200%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
             <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               <br/>
               if user is logged in/not logged in
@@ -137,28 +145,30 @@ export function UserAddNFT() {
               Upload image
               <br/>
               <ul>af{acceptedFileItems.length}</ul>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                {
-                  isDragActive ?
-                    <p>Drop the files here ...</p> :
-                    <p>Drag 'n' drop some files here, or click to select files</p>
-                }
-              </div>
-              <br/>
               <FormControl style={{maxWidth: 420}}>
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {
+                    isDragActive ?
+                      <p>Drop the files here ...</p> :
+                      <p>Drag 'n' drop some files here, or click to select files</p>
+                  }
+                </div>
+              </FormControl>
+              <br/>
+              <FormControl style={{maxWidth: 4200}}>
                   <DropzoneArea
-                      onChange={(files: any) => handleChange(files)}
+                      onChange={(files: any) => handleFileChange(files)}
                       classes={{
                         root: classes.smDropzone,
                       }}
                   />
               </FormControl>
               <br/>
-              title
+              title(50 characters)
               <br/>
               <FormControl style={{minWidth: 420}}>
-                  <InputLabel id="demo-simple-select-label">Category</InputLabel> 
+                  <InputLabel id="demo-simple-select-label">Title</InputLabel> 
                   <TextField
                       label="Multiline"
                       />
@@ -172,14 +182,14 @@ export function UserAddNFT() {
                   id="demo-simple-select"
                   value={"age"}
                   label="Age"
-                  onChange={handleChange}
+                  onChange={() => {}}
                 >
                   <MenuItem value={20}>For Sale</MenuItem>
                   <MenuItem value={30}>Collection</MenuItem>
                 </Select>
               </FormControl>
               <br/>
-              description (200 characters left)
+              description (200 characters left){description.length != null && <>{200 - description.length}</>}
               <br/>
               <FormControl style={{minWidth: 420}}>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -187,6 +197,7 @@ export function UserAddNFT() {
                     label="Description"
                     multiline
                     rows={4}
+                    onChange={(e: any) => handleDescriptionChange(e)}
                     />
               </FormControl>
               <br/>
@@ -202,7 +213,7 @@ export function UserAddNFT() {
                         id="demo-simple-select"
                         value={"age"}
                         label="Category"
-                        onChange={handleChange}
+                        onChange={() => {}}
                       >
                         <MenuItem value={10}>Art</MenuItem>
                         <MenuItem value={20}>Sports</MenuItem>
@@ -223,7 +234,7 @@ export function UserAddNFT() {
               <br/>
               <br/>
               <br/>
-              Have popup saying are you sure you want to mint this nft?
+              Have popup saying are you sure you want to mint this nft?  Confirn Cancel
                <br/>
               <Button>Mint!</Button>
         </div>

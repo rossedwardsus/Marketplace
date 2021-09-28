@@ -153,6 +153,9 @@ export function User() {
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             For Sale/Collected
                           </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            Public Private
+                          </Typography>
                         </CardContent>
                       </Box>
                       <br/>

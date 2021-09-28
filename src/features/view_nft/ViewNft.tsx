@@ -47,8 +47,11 @@ import CommentIcon from '@mui/icons-material/Comment';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CollectionsIcon from '@mui/icons-material/Collections';
 
+import miami_beach from '../../Miami_Beach_Marina.jpg'
+
 export function ViewNFT() {
   const [wasm, setWasm] = useState<any>({})
+  const { nftId } = useParams<any>();
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -86,7 +89,7 @@ export function ViewNFT() {
 
   return (
     <>
-        <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+        <div style={{width: "100%", height: "180%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
             <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               <br/>
               if user is logged in/not logged in
@@ -125,8 +128,8 @@ export function ViewNFT() {
                     <br/>
                     <CardMedia
                         component="img"
-                        sx={{ width: 151 }}
-                        image="/static/images/cards/live-from-space.jpg"
+                        sx={{ width: 600 }}
+                        image={miami_beach}
                         alt="NFT Image"
                       />
                    </Card>
@@ -155,6 +158,9 @@ export function ViewNFT() {
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                           Rating
                         </Typography>
+                         <Typography variant="subtitle1" color="text.secondary" component="div">
+                          Public Private
+                        </Typography>
                         <Stack>
                           <Rating 
                             name="half-rating" 
@@ -164,25 +170,18 @@ export function ViewNFT() {
                         />
                           <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
                         </Stack>
-                        <VisibilityIcon/>
+                        <VisibilityIcon/>views
                         <Grid container spacing={2}>
-                        <Grid item xs={2}>
-                          Art
+                          <Grid item xs={2}>
+                            Art
+                          </Grid>
                         </Grid>
-                      </Grid>
+                        <Link to={"/nfts/" + nftId + "/buy"} component={Button}>Buy</Link>
                       </CardContent>
                     </Box>
+                  </Box>   
                     <br/>
                     Comments<CommentIcon/>
-                    <br/>
-                    nftName
-                    <br/>
-                    algorand assetid
-                    <br/>
-                    <img height="100" width="100"></img>
-                    ipfs link
-                    <br/>
-                    rating 5/5
                     <br/>
                     <Stack>
                       <Rating 
@@ -197,21 +196,29 @@ export function ViewNFT() {
                     <br/>
                     share
                     <br/>
-                    <Link to={"/nfts/1234/buy"} component={Button}>Message</Link>
-                    <br/>
-                    For sale
                     <br/>
                     <br/>
                     Comments 10
                     <br/>
-                    username
+                    username/Comment Date
                     <br/>
-                    Wow this is a grat nft!
+                    <FormControl style={{minWidth: 120}}>
+                      <Paper>
+                        Wow this is a grat nft!
+                      </Paper>
+                    </FormControl>
                     <br/>
-                    Comment Date
+                    <br/>
+                    username/Comment Date
+                    <br/>
+                    <FormControl style={{minWidth: 120}}>
+                      <Paper>
+                        Wow this is a great nft!
+                      </Paper>
+                    </FormControl>
                     <br/>
                     <br/>
-                     <FormControl style={{minWidth: 120}}>
+                     <FormControl style={{minWidth: 500}}>
                       <InputLabel id="demo-simple-select-label">Add Comment</InputLabel>         
                       <TextField
                         label="Add Comment"
@@ -220,34 +227,7 @@ export function ViewNFT() {
                         />
                     </FormControl>
                     <br/>
-                    <Button>Add Comment</Button>
-              </Box>
-                comments
-                <br/>
-                nftName
-                <br/>
-                <br/>
-                Username
-                <br/>
-                image
-                <br/>
-                description
-                <br/>
-                <br/>
-                Categories
-                <br/>
-                <Link to={"/nfts/1234/buy"} component={Button}>Rate</Link>
-                <br/>
-                <Link to={"/nfts/1234/buy"} component={Button}>Like</Link>
-                <br/>
-                Make an inquery
-                <br/>
-                Other users nfts
-                <br/>
-                Other nfts inthis cateogry
-                <br/>
-                <Link to={"/nfts/1234/buy"} component={Button}>Buy</Link>
-               
+                    <Button>Add Comment</Button>        
           </div>
       </div>
      </>
