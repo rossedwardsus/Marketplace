@@ -51,6 +51,7 @@ function App() {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Niftgen
               </Typography>
+              <Link to={"/howto"} color="inherit" component={Button}>How To</Link>
               <Link to={"/nfts/browse"} color="inherit" component={Button}>Browse</Link>
               <Link to={"/user/nfts"} color="inherit" component={Button}>User Home</Link>
               <Link to={"/user/nfts/add"} color="inherit" component={Button}>Sign Up</Link>
