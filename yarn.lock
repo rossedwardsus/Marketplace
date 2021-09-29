@@ -1299,11 +1299,6 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   "version" "0.2.5"
 
-"@emurgo/cardano-serialization-lib-browser@^8.0.0":
-  "integrity" "sha512-JoYF8LfnELddD9oGVhrEZ6j1PPvXladT80XVGCGmwBARag/iNNUYZEZwklGPf5YBztX26Xzj2zAK0/4hK407Eg=="
-  "resolved" "https://registry.npmjs.org/@emurgo/cardano-serialization-lib-browser/-/cardano-serialization-lib-browser-8.0.0.tgz"
-  "version" "8.0.0"
-
 "@eslint/eslintrc@^0.3.0":
   "integrity" "sha512-1JTKgrOKAHVivSvOYw+sJOunkBjUOvjqWk1DPja7ZFhIS2mX/4EgTT8M7eTK9jrKhL/FvXXEbQwIs3pg1xp3dg=="
   "resolved" "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.3.0.tgz"

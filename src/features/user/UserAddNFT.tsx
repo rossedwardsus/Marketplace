@@ -41,6 +41,10 @@ const useStyles = makeStyles({
     height: "0%",
     width: 500
   },
+  previewChip: {
+    minWidth: 1600,
+    maxWidth: 2100
+  },
 });
 
 export function UserAddNFT() {
@@ -73,14 +77,14 @@ export function UserAddNFT() {
   );
 
 
-  const loadWasm = async () => {
-    try {
-      const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
+  //const loadWasm = async () => {
+  //  try {
+  //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
       //this.setState({wasm});
-    } catch(err) {
-      console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-    }
-  };
+  //  } catch(err) {
+  //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
+  //  }
+  //};
 
   //loadWasm = () => {
 
@@ -172,6 +176,8 @@ export function UserAddNFT() {
               <br/>
               <FormControl style={{maxWidth: 4200}}>
                   <DropzoneArea
+                      showPreviews={false}
+                      showPreviewsInDropzone={true}
                       onChange={(files: any) => handleFileChange(files)}
                       classes={{
                         root: classes.smDropzone,

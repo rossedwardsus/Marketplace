@@ -65,22 +65,6 @@ export function BuyNFTPreview() {
   //)
   );
 
-
-  const loadWasm = async () => {
-    try {
-      const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-      //this.setState({wasm});
-    } catch(err) {
-      console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-    }
-  };
-
-  //loadWasm = () => {
-
-  //    const S = import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js')
-
-  //}
-
   useEffect(() => {
 
       //loadWasm();

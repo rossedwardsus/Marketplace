@@ -56,14 +56,14 @@ export function PublicFeedNFTs() {
 
   const incrementValue = Number(incrementAmount) || 0;*/
 
-  const loadWasm = async () => {
-    try {
-      const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-      setWasm({wasm});
-    } catch(err) {
-      console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-    }
-  };
+  //const loadWasm = async () => {
+  //  try {
+  //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
+  //    setWasm({wasm});
+  //  } catch(err) {
+  //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
+  //  }
+  //};
 
   //loadWasm = () => {
 
@@ -76,8 +76,6 @@ export function PublicFeedNFTs() {
   };
 
   useEffect(() => {
-
-      loadWasm();
 
       //if ("cardano" in window == false){
       //    <>please install nami</>}
