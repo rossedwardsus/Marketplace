@@ -26,6 +26,7 @@ import { UserAddNFT } from './features/user/UserAddNFT';
 import { User } from './features/user/UserNFTs';
 import { UserSettings } from './features/user/UserSettings';
 import { UserNotifications } from './features/user/UserNotifications';
+import { UserChats } from './features/user/UserChats';
 
 import Gallery from './Gallery_light_background.png';
 import Marketplace from './Marketplace_light_background.png';
@@ -63,6 +64,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/signup" exact component={Signup} />
               <Route path="/login" exact component={Login} />
+              <Route path="/user/chats/:chatId" exact component={UserChats} />
               <Route path="/user/nfts/add" exact component={UserAddNFT} />
               <Route path="/user/notifications" exact component={UserNotifications} />
               <Route path="/user/settings" exact component={UserSettings} />

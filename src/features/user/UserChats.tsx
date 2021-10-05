@@ -16,10 +16,15 @@ import { Link, useParams } from "react-router-dom";
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
 
-
-export function UserNotifications() {
+export function UserChats() {
   const {userId} = useParams<any>();
+  const [chats, setChats] = useState<any>([{chatId: 1, chatText: "You:\nI want to find out about this nft\nUser1:\n\tsure"}]);
+  const [newChatMessage, setNewChatMessage] = useState<any>();
+
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -46,6 +51,29 @@ export function UserNotifications() {
   //    loadWasm();
 
   //}, []);
+
+  const onNewChatMessageChange = (e: any) => {
+
+      setNewChatMessage(e.target.value);
+
+  } 
+
+  const addChatMessage = () => {
+
+      let chatsTemp = [...chats];
+      //alert(JSON.stringify(chats_temp));
+      let currentChatIndex = chatsTemp.findIndex((chat: any) => chat.chatId == 1);
+      //alert(current_chat_index);
+      var chatTextTemp = chatsTemp[currentChatIndex].chatText;
+      //chatTextTemp = chatTextTemp + "\n\t\tWhat would you like to know?";
+      chatTextTemp = chatTextTemp + "\nYou:\n\t\t" + newChatMessage;
+      chatsTemp[currentChatIndex].chatText = chatTextTemp;
+
+      alert(JSON.stringify(chatsTemp));
+
+      setChats(chatsTemp);
+
+  }
 
   return (
     <>
@@ -81,7 +109,7 @@ export function UserNotifications() {
               <br/>
               <Grid container spacing={2}>
                 <Grid item xs={2}>
-                  user1 has left a comment
+                  user1 has started a chat
                 </Grid>
                 <Grid item xs={2}>
                   user2
@@ -93,6 +121,22 @@ export function UserNotifications() {
                   user 4
                 </Grid>
               </Grid>
+              <br/>
+              <FormControl style={{maxWidth: 4200}}>
+                <TextField
+                  style={{height: 300, width: 500}}
+                  rows={10}
+                  multiline
+                  value={chats[0].chatText}
+                >
+                </TextField>
+                <br/>
+                <br/>
+                <TextField onChange={(e: any) => onNewChatMessageChange(e)} placeholder="Enter Comment"/>
+              </FormControl>
+              <br/>
+              <Button onClick={() => addChatMessage()}>Add</Button>
+              
             </div>
          </div>
     </>

@@ -173,10 +173,10 @@ export function PublicFeedNFTs() {
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography component="div" variant="h5">
-                            Nft Name<Link to="/nfts/1234">nft{index+1}</Link>
+                            <Link to="/nfts/1234" style={{ textDecoration: 'none' }}>nft{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Username<Link to="/users/1234">username{index+1}</Link>
+                            <Link to="/users/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             IPFS Address
@@ -185,7 +185,7 @@ export function PublicFeedNFTs() {
                             Aseet ID
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Message User
+                            <Link to="/user/chats/1234" style={{ textDecoration: 'none' }}>Message User</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             tbd

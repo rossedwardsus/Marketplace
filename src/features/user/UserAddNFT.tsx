@@ -252,7 +252,7 @@ export function UserAddNFT(props: any): any {
               <br/>
               <br/>
               <FormControl style={{minWidth: 120}}>
-                <InputLabel id="demo-simple-select-label">For Sale or For Collection</InputLabel>
+                <InputLabel id="demo-simple-select-label">Type</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -261,7 +261,6 @@ export function UserAddNFT(props: any): any {
                   onChange={() => {}}
                 >
                   <MenuItem value={20}>For Sale</MenuItem>
-                  <MenuItem value={30}>Collection</MenuItem>
                 </Select>
               </FormControl>
               <br/>
@@ -303,9 +302,12 @@ export function UserAddNFT(props: any): any {
               <FormControl style={{minWidth: 420}}>
                   <InputLabel id="demo-simple-select-label">Price</InputLabel> 
                   <TextField
-                      label="Multiline"
+                      label="Algos"
                       onChange={() => {}}
                       />
+                  <Typography>
+                    Algos ($1)
+                  </Typography>
               </FormControl>
               <br/>
               <Dialog
