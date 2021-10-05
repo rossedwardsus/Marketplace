@@ -51,8 +51,8 @@ const useStyles = makeStyles({
 });
 
 const schema = z.object({
-  name: z.string().nonempty({ message: 'Required' }),
-  price: z.number().min(10),
+  nftName: z.string().nonempty({ message: 'Required' }),
+  price: z.number().min(.1),
 });
 
 
@@ -70,7 +70,9 @@ export function UserAddNFT(props: any): any {
   const [description, setDescription] = useState<any>(false);
   const [open, setOpen] = React.useState(false);
 
-   const { handleSubmit, reset, control, formState } = useForm<any>({mode: "onTouched", 
+   const { handleSubmit, reset, control, formState } = useForm<any>({
+    resolver: zodResolver(schema),
+    mode: "onTouched", 
     defaultValues: {
       nftName: "",
       checkbox: false
@@ -239,7 +241,7 @@ export function UserAddNFT(props: any): any {
                 render={({ field, formState }) => (
                   
                       <FormControl style={{minWidth: 420}}>
-                          <InputLabel id="demo-simple-select-label">Title</InputLabel> 
+                          <InputLabel id="demo-simple-select-label"></InputLabel> 
                           <TextField
                               {...field}
                               error={!!formState.errors?.nftName}
@@ -276,7 +278,6 @@ export function UserAddNFT(props: any): any {
                     />
               </FormControl>
               <br/>
-              <textarea></textarea>
               <br/>
               <br/>
               <FormControl style={{minWidth: 420}}>
@@ -297,18 +298,27 @@ export function UserAddNFT(props: any): any {
                     </FormControl>
               </FormControl>
               <br/>
-              Price
+              <Typography>
+                Price Algos ($1)
+              </Typography>
               <br/>
-              <FormControl style={{minWidth: 420}}>
-                  <InputLabel id="demo-simple-select-label">Price</InputLabel> 
-                  <TextField
-                      label="Algos"
-                      onChange={() => {}}
-                      />
-                  <Typography>
-                    Algos ($1)
-                  </Typography>
-              </FormControl>
+              <Controller
+                name="price"
+                control={control}
+                rules={{ required: 'First name required' }}
+                render={({ field, formState }) => (
+                  
+                    <FormControl style={{width: 120}}>
+                        <InputLabel id="demo-simple-select-label"></InputLabel> 
+                        <TextField
+                            label="Algos"
+                            onChange={(e: any) => field.onChange(parseInt(e.target.value))}
+                            error={!!formState.errors?.nftName}
+                            />
+                        {JSON.stringify(formState.errors)}
+                    </FormControl>
+                )}
+              />
               <br/>
               <Dialog
                 open={open}

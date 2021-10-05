@@ -22,7 +22,7 @@ import Button from '@mui/material/Button';
 
 export function UserChats() {
   const {userId} = useParams<any>();
-  const [chats, setChats] = useState<any>([{chatId: 1, chatText: "You:\nI want to find out about this nft\nUser1:\n\tsure"}]);
+  const [chats, setChats] = useState<any>([{chatId: 1, chatText: "You:\nI want to find out about this nft\nUser1:\n\tsure"}, {userChattingWith: 2, chat:[{userId: 1, chatMessage: "", chatMessageDateTime: "today"}, {userId: 2, userName: "", chatMessage: "", chatMessageDateTime: "today"}]}]);
   const [newChatMessage, setNewChatMessage] = useState<any>();
 
   /*const count = useAppSelector(selectCount);
