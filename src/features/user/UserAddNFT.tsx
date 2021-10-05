@@ -15,7 +15,10 @@ import styles from './Counter.module.css';*/
 //import { HeaderMenu } from '../../header_menu/HeaderMenu';
 
 import { Link as RRLink, useParams } from "react-router-dom";
-import { useForm } from 'react-hook-form'
+
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
 import {DropzoneArea} from 'material-ui-dropzone'
 import TextField from '@mui/material/TextField';
@@ -47,7 +50,13 @@ const useStyles = makeStyles({
   },
 });
 
-export function UserAddNFT() {
+const schema = z.object({
+  name: z.string().nonempty({ message: 'Required' }),
+  price: z.number().min(10),
+});
+
+
+export function UserAddNFT(props: any): any {
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -56,10 +65,23 @@ export function UserAddNFT() {
 
   const classes = useStyles();
   const params = useParams();
+  const [files, setFiles] = useState<any>([]);
   const [fileAdded, setFileAdded] = useState<any>(false);
   const [description, setDescription] = useState<any>(false);
   const [open, setOpen] = React.useState(false);
 
+   const { handleSubmit, reset, control, formState } = useForm<any>({mode: "onTouched", 
+    defaultValues: {
+      nftName: "",
+      checkbox: false
+    }
+  });
+
+  const onSubmit = (data: any) => alert(JSON.stringify(data));
+
+  const onSubmit1 = handleSubmit((data) => {
+    alert(JSON.stringify(data))
+  })
 
   //const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
@@ -67,7 +89,16 @@ export function UserAddNFT() {
     //  {file.path} - {file.size} bytes
     //</li>
   //}, [])
-  const {acceptedFiles, fileRejections, getRootProps, getInputProps, isDragActive} = useDropzone({accept: 'image/jpeg, image/png'})
+  const {acceptedFiles, fileRejections, getRootProps, getInputProps, isDragActive} = useDropzone(
+    {
+      accept: 'image/jpeg, image/png',
+      onDrop: acceptedFiles => {
+        setFiles(acceptedFiles.map(file => Object.assign(file, {
+          preview: URL.createObjectURL(file)
+        })));
+      }
+    }
+  )
 
   const acceptedFileItems = acceptedFiles.map(file => {}//(
     //<li key={file.path}>
@@ -75,6 +106,16 @@ export function UserAddNFT() {
     //</li>
   //)
   );
+
+  const thumbs = files.map((file: any) => (
+    <div key={file.name}>
+      <div>
+        <img height={300} width={500}
+          src={file.preview}
+        />
+      </div>
+    </div>
+  ));
 
 
   //const loadWasm = async () => {
@@ -122,7 +163,8 @@ export function UserAddNFT() {
 
   return (
     <>
-        <div style={{width: "100%", height: "200%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div style={{width: "100%", height: "300%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
             <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
               <br/>
               if user is logged in/not logged in
@@ -172,6 +214,9 @@ export function UserAddNFT() {
                       <p>Drag 'n' drop some files here, or click to select files</p>
                   }
                 </div>
+                <aside>
+                  {thumbs}
+                </aside>
               </FormControl>
               <br/>
               <FormControl style={{maxWidth: 4200}}>
@@ -187,12 +232,23 @@ export function UserAddNFT() {
               <br/>
               title(50 characters)
               <br/>
-              <FormControl style={{minWidth: 420}}>
-                  <InputLabel id="demo-simple-select-label">Title</InputLabel> 
-                  <TextField
-                      label="Multiline"
-                      />
-              </FormControl>
+              <Controller
+                name="nftName"
+                control={control}
+                rules={{ required: 'First name required' }}
+                render={({ field, formState }) => (
+                  
+                      <FormControl style={{minWidth: 420}}>
+                          <InputLabel id="demo-simple-select-label">Title</InputLabel> 
+                          <TextField
+                              {...field}
+                              error={!!formState.errors?.nftName}
+                              />
+                          {JSON.stringify(formState.errors)}
+                      </FormControl>
+                )}
+                defaultValue=""
+                />
               <br/>
               <br/>
               <FormControl style={{minWidth: 120}}>
@@ -278,8 +334,11 @@ export function UserAddNFT() {
               Have popup saying are you sure you want to mint this nft?  Confirn Cancel
                <br/>
               <Button onClick={handleClickOpen}>Mint!</Button>
+              <Button type="submit">Submit and Mint!</Button>
+              <input type="submit" />
         </div>
        </div>
+      </form>
     </>
   );
 }

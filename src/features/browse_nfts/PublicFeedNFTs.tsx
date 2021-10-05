@@ -36,8 +36,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 
+import miami_beach from '../../Miami_Beach_Marina.jpg'
 
-import { Link } from "react-router-dom";
+
+import { Link, useParams } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -49,6 +51,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export function PublicFeedNFTs() {
   const [wasm, setWasm] = useState<any>({})
+  const { category } = useParams<any>()
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -120,32 +123,30 @@ export function PublicFeedNFTs() {
             <br/>
             hello/browse by category
             <br/>
-            sports/art
+            sports/art{category}
             <br/>
             <Grid container spacing={2}>
               <Grid item xs={2}>
-                <Link to="/nfts/browse/art" component={Button}>Art</Link> 
+                <Link to="/nfts/browse/art" style={{ textDecoration: 'none' }}>Art</Link> 
               </Grid>
               <Grid item xs={2}>
-                <Item>Sports</Item>
+                <Link to="/nfts/browse/sports" style={{ textDecoration: 'none' }}>Sports</Link>
               </Grid>
               <Grid item xs={2}>
-                <Item>xs=4</Item>
+                <Link to="/nfts/browse/misc" style={{ textDecoration: 'none' }}>Misc</Link>
               </Grid>
               <Grid item xs={2}>
-                <Item>xs=8</Item>
+                <Link to="/nfts/browse/collectable" style={{ textDecoration: 'none' }}>Collectable</Link>
               </Grid>
             </Grid>
             <br/>
-            filter by for sale or not
+            filter
             <br/>
             <select>
               <option>All NFTs</option>
-              <option>NFTs Fr SALE</option>
-              <option>Just Being Collected</option>
             </select>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <FormControl style={{width: 100}}>
+              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -154,8 +155,6 @@ export function PublicFeedNFTs() {
                 onChange={handleChange}
               >
                 <MenuItem value={10}>All</MenuItem>
-                <MenuItem value={20}>For Sale</MenuItem>
-                <MenuItem value={30}>Being Collected</MenuItem>
               </Select>
             </FormControl>
             <div>
@@ -166,8 +165,8 @@ export function PublicFeedNFTs() {
                       <br/>
                       <CardMedia
                           component="img"
-                          sx={{ width: 151 }}
-                          image="/static/images/cards/live-from-space.jpg"
+                          sx={{ height: 200, width: 200 }}
+                          image={miami_beach}
                           alt="NFT Image"
                         />
                      </Card>
@@ -186,36 +185,17 @@ export function PublicFeedNFTs() {
                             Aseet ID
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Message
+                            Message User
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            For Sale/Collected
+                            tbd
                           </Typography>
                         </CardContent>
+
+                        <br/>
+                        <br/>
                        
                       </Box>
-
-                      
-                      <br/>
-                      {nft.nftName}
-                      <br/>
-                      <Link to={"/nfts/1234"}>algorand assetidid</Link>
-                      <br/>
-                      <img height="100" width="100"></img>
-                      ipfs link
-                      <br/>
-                      rating 5/5
-                      <br/>
-                      Comments 10
-                      <br/>
-                      views
-                      <br/>
-                      share
-                      <br/>
-                      message
-                      <br/>
-                      For sale
-                      <br/>
                 </Box>
               )}
           </div>

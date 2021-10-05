@@ -66,11 +66,11 @@ function App() {
               <Route path="/user/nfts/add" exact component={UserAddNFT} />
               <Route path="/user/notifications" exact component={UserNotifications} />
               <Route path="/user/settings" exact component={UserSettings} />
-              <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
               <Route path="/nfts/browse/:category" exact component={PublicFeedNFTs} />
+              <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
               <Route path="/nfts/:nftId/buy" exact component={BuyNFT} />
               <Route path="/nfts/:nftId" exact component={ViewNFT} />
-              <Route path="/users/:username" exact component={User} />
+              <Route path="/users/:userid" exact component={User} />
               <Route path="/howto" exact component={HowTo} />
           </Switch>
               

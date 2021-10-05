@@ -38,6 +38,10 @@ import { Link, useParams } from "react-router-dom";
 
 import { HeaderMenu } from '../header_menu/HeaderMenu';
 
+import miami_beach from '../../Miami_Beach_Marina.jpg'
+
+
+
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -129,7 +133,7 @@ export function User() {
                       <CardMedia
                           component="img"
                           sx={{ width: 151 }}
-                          image="/static/images/cards/live-from-space.jpg"
+                          image={miami_beach}
                           alt="NFT Image"
                         />
                      </Card>
@@ -158,26 +162,6 @@ export function User() {
                           </Typography>
                         </CardContent>
                       </Box>
-                      <br/>
-                      {nft.nftName}
-                      <br/>
-                      <Link to={"/nfts/1234"}>algorand assetidid</Link>
-                      <br/>
-                      <img height="100" width="100"></img>
-                      ipfs link
-                      <br/>
-                      rating 5/5
-                      <br/>
-                      Comments 10
-                      <br/>
-                      views
-                      <br/>
-                      share
-                      <br/>
-                      message
-                      <br/>
-                      For sale
-                      <br/>
                 </Box>
               
                </>

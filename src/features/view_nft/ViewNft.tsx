@@ -145,21 +145,18 @@ export function ViewNFT() {
                           IPFS Address
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
-                          Aseet ID
+                          Asset ID
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                           Message User
                         </Typography>
                         <MessageIcon/>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
-                          For Sale/Collected - Price
+                          Price
                         </Typography>
                         <AttachMoneyIcon/><CollectionsIcon/>
-                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                          Rating
-                        </Typography>
                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                          Public Private
+                          Tbd
                         </Typography>
                         <Stack>
                           <Rating 
@@ -198,6 +195,15 @@ export function ViewNFT() {
                     <br/>
                     <br/>
                     <br/>
+                   <FormControl style={{minWidth: 500}}>
+                    <InputLabel id="demo-simple-select-label">Add Comment</InputLabel>         
+                    <TextField
+                      label="Add Comment"
+                      multiline
+                      rows={4}
+                      />
+                    </FormControl>
+                    <br/>
                     Comments 10
                     <br/>
                     username/Comment Date
@@ -217,15 +223,6 @@ export function ViewNFT() {
                       </Paper>
                     </FormControl>
                     <br/>
-                    <br/>
-                     <FormControl style={{minWidth: 500}}>
-                      <InputLabel id="demo-simple-select-label">Add Comment</InputLabel>         
-                      <TextField
-                        label="Add Comment"
-                        multiline
-                        rows={4}
-                        />
-                    </FormControl>
                     <br/>
                     <Button>Add Comment</Button>        
           </div>
