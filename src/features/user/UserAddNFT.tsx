@@ -38,6 +38,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import axios from 'axios';
+
+import {
+  useMutation,
+  gql
+} from "@apollo/client";
+
 const useStyles = makeStyles({
   smDropzone: {
     maxHeight: 0,
@@ -50,11 +57,41 @@ const useStyles = makeStyles({
   },
 });
 
+
 const schema = z.object({
-  nftName: z.string().nonempty({ message: 'Required' }),
-  price: z.number().min(.1),
+    nftName: z.string().nonempty('Name Requiredz'),
+    //nftName: z.string().refine((val) => !Number.isNaN(parseInt(val, 10)), {
+    //  message: "Expected number, received a string"
+    //}),
+    //nftDescription: z.string().min(1, 'Descriptionz Requiredz'),
+    nftDescription: z.string().nonempty('Descriptionz Requiredz'),
+    //nftDescription: z.string().refine((val) => !Number.isNaN(parseInt(val, 10)), {
+    //  message: "Expected number, received a string"
+    //}),
+    price: z.number().min(.1),
 });
 
+/*schema.safeParse(data, {
+  errorMap: (error, _ctx) => {
+    if (error.code === z.ZodErrorCode.invalid_type) {
+      if (error.expected === 'string') {
+        return {message: 'custom message for invalid string'};
+      }
+    }
+    return defaultErrorMap(error, _ctx);
+  }
+});*/
+
+
+//mutation name and response
+const ADD_NFT_MUTATION = gql`
+  mutation AddNFT($name: String, $description: String){
+    addNFT(name: $name, description: $description){
+      name
+      description
+    }
+  }
+` 
 
 export function UserAddNFT(props: any): any {
   /*const count = useAppSelector(selectCount);
@@ -68,11 +105,37 @@ export function UserAddNFT(props: any): any {
   const [files, setFiles] = useState<any>([]);
   const [fileAdded, setFileAdded] = useState<any>(false);
   const [description, setDescription] = useState<any>(false);
+  const [titleDisabled, setTitleDisabled] = useState(true);
+  const [descriptionDisabled, setDescriptionDisabled] = useState(true);
+  const [priceDisabled, setPriceDisabled] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const [addNFT] = useMutation(ADD_NFT_MUTATION);
+  
+  //addTodo(
+  //       {
+  //         variables: {todo: todoInput, isPublic }
+  //       }
+  //     );
 
-   const { handleSubmit, reset, control, formState } = useForm<any>({
+
+  //const name = z.string({
+  //  required_error: "Name is required",
+  //  invalid_type_error: "Name must be a string",
+  //});
+
+  //const [createNFT] = useMutation(ADD_NFT, {
+  //  onCompleted(data) {
+  //    confirm(data);
+  //  }
+  //});
+
+
+
+
+  const { handleSubmit, reset, control, formState } = useForm<any>({
     resolver: zodResolver(schema),
-    mode: "onTouched", 
+    mode: "all", 
     defaultValues: {
       nftName: "",
       checkbox: false
@@ -80,9 +143,26 @@ export function UserAddNFT(props: any): any {
   });
 
   const onSubmit = (data: any) => alert(JSON.stringify(data));
+  //var formData = new FormData();
+  //formData.append('file', files[0]);
+
+  //fetch('http://server.com/api/upload', {
+  //  method: 'POST',
+  //  body: formData
+  //})
 
   const onSubmit1 = handleSubmit((data) => {
     alert(JSON.stringify(data))
+
+    //also file
+    //axios.post('https://us-central1-savings-club-tracker.cloudfunctions.net/plaid', { name: 'name', description: 'description', price: 'price' })
+    //      .then((res) => {
+    //          //alert(JSON.stringify(res.data.link_token));
+    //          setLinkToken(res.data.link_token);
+    //       });
+
+    //addNFT({ variables: { name: name, description: description, price: price }})
+
   })
 
   //const onDrop = useCallback(acceptedFiles => {
@@ -95,6 +175,11 @@ export function UserAddNFT(props: any): any {
     {
       accept: 'image/jpeg, image/png',
       onDrop: acceptedFiles => {
+        setTitleDisabled(false);
+        setDescriptionDisabled(false);
+        setPriceDisabled(false);
+        setSubmitDisabled(false);
+
         setFiles(acceptedFiles.map(file => Object.assign(file, {
           preview: URL.createObjectURL(file)
         })));
@@ -237,7 +322,6 @@ export function UserAddNFT(props: any): any {
               <Controller
                 name="nftName"
                 control={control}
-                rules={{ required: 'First name required' }}
                 render={({ field, formState }) => (
                   
                       <FormControl style={{minWidth: 420}}>
@@ -245,12 +329,13 @@ export function UserAddNFT(props: any): any {
                           <TextField
                               {...field}
                               error={!!formState.errors?.nftName}
+                              disabled={titleDisabled}
                               />
                           {JSON.stringify(formState.errors)}
                       </FormControl>
                 )}
                 defaultValue=""
-                />
+              />
               <br/>
               <br/>
               <FormControl style={{minWidth: 120}}>
@@ -266,17 +351,27 @@ export function UserAddNFT(props: any): any {
                 </Select>
               </FormControl>
               <br/>
-              description (200 characters left){description.length != null && <>{200 - description.length}</>}
+              description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
-              <FormControl style={{minWidth: 420}}>
-                <InputLabel id="demo-simple-select-label"></InputLabel>
-                <TextField
-                    label="Description"
-                    multiline
-                    rows={4}
-                    onChange={(e: any) => handleDescriptionChange(e)}
-                    />
-              </FormControl>
+              <Controller
+                name="nftDescription"
+                control={control}
+                render={({ field, formState }) => (
+                    <FormControl style={{minWidth: 420}}>
+                      <InputLabel id="demo-simple-select-label"></InputLabel>
+                      <TextField
+                          {...field}
+                          label="Description"
+                          multiline
+                          rows={4}
+                          error={!!formState.errors?.nftDescription}
+                          disabled={descriptionDisabled}
+                          />
+                      {JSON.stringify(formState.errors)}
+                    </FormControl>
+                )}
+                defaultValue=""
+              />
               <br/>
               <br/>
               <br/>
@@ -305,15 +400,17 @@ export function UserAddNFT(props: any): any {
               <Controller
                 name="price"
                 control={control}
-                rules={{ required: 'First name required' }}
+                rules={{ required: "Price required" }}
                 render={({ field, formState }) => (
                   
                     <FormControl style={{width: 120}}>
                         <InputLabel id="demo-simple-select-label"></InputLabel> 
                         <TextField
+                            {...field}
                             label="Algos"
                             onChange={(e: any) => field.onChange(parseInt(e.target.value))}
-                            error={!!formState.errors?.nftName}
+                            error={!!formState.errors?.price}
+                            disabled={priceDisabled}
                             />
                         {JSON.stringify(formState.errors)}
                     </FormControl>
@@ -345,8 +442,8 @@ export function UserAddNFT(props: any): any {
               <br/>
               Have popup saying are you sure you want to mint this nft?  Confirn Cancel
                <br/>
-              <Button onClick={handleClickOpen}>Mint!</Button>
-              <Button type="submit">Submit and Mint!</Button>
+              <Button onClick={handleClickOpen} disabled={submitDisabled}>Mint!</Button>
+              <Button type="submit" disabled={titleDisabled}>Submit and Mint!</Button>
               <input type="submit" />
         </div>
        </div>
