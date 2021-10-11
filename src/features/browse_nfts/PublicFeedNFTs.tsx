@@ -91,7 +91,7 @@ export function PublicFeedNFTs() {
 
   return (
     <>
-      <div style={{width: "100%", height: "100%", borderWidth: "0", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+      <div style={{width: "100%", height: "150%", borderWidth: "0", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
           <div style={{width: "20%", height: "100%",borderWidth: 0, borderStyle: "solid", float:"left", display: "inline-block"}}>
             <br/>
             <nav>
@@ -156,9 +156,10 @@ export function PublicFeedNFTs() {
             <br/>
             <div>
              {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
+               <>
                <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <br/>
-                    <Card sx={{ display: 'flex' }}>
+                    <Card>
                       <br/>
                       <CardMedia
                           component="img"
@@ -188,12 +189,12 @@ export function PublicFeedNFTs() {
                             tbd
                           </Typography>
                         </CardContent>
-
-                        <br/>
-                        <br/>
-                       
                       </Box>
                 </Box>
+                <br/>
+                <br/>
+                <br/>
+                </>
               )}
           </div>
          </div>
