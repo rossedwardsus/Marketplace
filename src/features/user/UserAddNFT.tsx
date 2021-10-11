@@ -35,6 +35,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Chip from '@mui/material/Chip';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -105,11 +107,12 @@ export function UserAddNFT(props: any): any {
   const [files, setFiles] = useState<any>([]);
   const [fileAdded, setFileAdded] = useState<any>(false);
   const [description, setDescription] = useState<any>(false);
-  const [titleDisabled, setTitleDisabled] = useState(true);
+  const [titleDisabled, setTitleDisabled] = useState(false);
   const [descriptionDisabled, setDescriptionDisabled] = useState(true);
   const [priceDisabled, setPriceDisabled] = useState(true);
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [addNFT] = useMutation(ADD_NFT_MUTATION);
   
   //addTodo(
@@ -129,6 +132,16 @@ export function UserAddNFT(props: any): any {
   //    confirm(data);
   //  }
   //});
+
+  const handleChange = (event: any) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedCategories(
+      // On autofill we get a the stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
 
 
 
@@ -376,22 +389,30 @@ export function UserAddNFT(props: any): any {
               <br/>
               <br/>
               <FormControl style={{minWidth: 420}}>
-                  <InputLabel id="demo-simple-select-label">Category</InputLabel> 
-                   <FormControl style={{minWidth: 120}}>
-                      <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={"age"}
-                        label="Category"
-                        onChange={() => {}}
-                      >
-                        <MenuItem value={10}>Art</MenuItem>
-                        <MenuItem value={20}>Sports</MenuItem>
-                        <MenuItem value={30}>Being Collected</MenuItem>
-                      </Select>
-                    </FormControl>
+               <InputLabel id="demo-simple-select-label"></InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  multiple
+                  value={selectedCategories}
+                  onChange={handleChange}
+                  input={<OutlinedInput id="select-multiple-chip" />}
+                  renderValue={(selected: any) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                      {selected.map((value: any) => (
+                        <Chip key={value} label={value} />
+                      ))}
+                    </Box>
+                  )}
+                >
+                  <MenuItem value={"Art"}>Art</MenuItem>
+                  <MenuItem value={"Music"}>Music</MenuItem>
+                  <MenuItem value={"Sports"}>Sports</MenuItem>
+                  <MenuItem value={"Collectable"}>Collectable</MenuItem>
+                </Select>
               </FormControl>
+              
+              <br/>
               <br/>
               <Typography>
                 Price Algos ($1)

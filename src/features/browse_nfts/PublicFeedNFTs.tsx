@@ -91,8 +91,8 @@ export function PublicFeedNFTs() {
 
   return (
     <>
-      <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
-          <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
+      <div style={{width: "100%", height: "100%", borderWidth: "0", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+          <div style={{width: "20%", height: "100%",borderWidth: 0, borderStyle: "solid", float:"left", display: "inline-block"}}>
             <br/>
             <nav>
               <ul>
@@ -116,7 +116,7 @@ export function PublicFeedNFTs() {
             </nav>
             <br/>
           </div>
-          <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
+          <div style={{width: "60%", height: "100%", borderWidth: 0, borderStyle: "solid", display: "inline-block"}}>
          
           <br/>
             {"algorand" in window == false && <>please install algorand wallet</>}
@@ -127,7 +127,7 @@ export function PublicFeedNFTs() {
             <br/>
             <Grid container spacing={2}>
               <Grid item xs={2}>
-                <Link to="/nfts/browse/art" style={{ textDecoration: 'none' }}>Art</Link> 
+                <Link to="/nfts/browse/art" style={{ textDecoration: 'none' }}>Arts</Link> 
               </Grid>
               <Grid item xs={2}>
                 <Link to="/nfts/browse/sports" style={{ textDecoration: 'none' }}>Sports</Link>
@@ -140,11 +140,6 @@ export function PublicFeedNFTs() {
               </Grid>
             </Grid>
             <br/>
-            filter
-            <br/>
-            <select>
-              <option>All NFTs</option>
-            </select>
             <FormControl style={{width: 100}}>
               <InputLabel id="demo-simple-select-label">Filter</InputLabel>
               <Select
@@ -157,6 +152,8 @@ export function PublicFeedNFTs() {
                 <MenuItem value={10}>All</MenuItem>
               </Select>
             </FormControl>
+            <br/>
+            <br/>
             <div>
              {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
                <Box sx={{ display: 'flex', flexDirection: 'row' }}>
@@ -182,7 +179,7 @@ export function PublicFeedNFTs() {
                             IPFS Address
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Aseet ID
+                            Asset ID
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             <Link to="/user/chats/1234" style={{ textDecoration: 'none' }}>Message User</Link>

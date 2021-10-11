@@ -23,7 +23,7 @@ import { Login } from './features/signup_login/Login';
 import { HowTo } from './features/how_to/HowTo';
 
 import { UserAddNFT } from './features/user/UserAddNFT';
-import { User } from './features/user/UserNFTs';
+import { User } from './features/user/User';
 import { UserSettings } from './features/user/UserSettings';
 import { UserNotifications } from './features/user/UserNotifications';
 import { UserChats } from './features/user/UserChats';
@@ -38,7 +38,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 function App() {
   return (
      <Router>
-         <AppBar position="static">
+         <AppBar position="static" color="default">
             <Toolbar>
               <IconButton
                 size="large"
@@ -54,8 +54,9 @@ function App() {
               </Typography>
               <Link to={"/howto"} color="inherit" component={Button}>How To</Link>
               <Link to={"/nfts/browse"} color="inherit" component={Button}>Browse</Link>
-              <Link to={"/user/nfts"} color="inherit" component={Button}>User Home</Link>
-              <Link to={"/user/nfts/add"} color="inherit" component={Button}>Sign Up</Link>
+              <Link to={"/user"} color="inherit" component={Button}>User Home</Link>
+              <Link to={"/signup"} color="inherit" component={Button}>Sign Up</Link>
+              <Link to={"/login"} color="inherit" component={Button}>Login</Link>
               <Link to={"/user/nfts/add"} color="inherit" component={Button}>Add NFT</Link>
             </Toolbar>
           </AppBar>
@@ -64,6 +65,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/signup" exact component={Signup} />
               <Route path="/login" exact component={Login} />
+              <Route path="/user" exact component={User} />
               <Route path="/user/chats/:chatId" exact component={UserChats} />
               <Route path="/user/nfts/add" exact component={UserAddNFT} />
               <Route path="/user/notifications" exact component={UserNotifications} />
@@ -72,7 +74,7 @@ function App() {
               <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
               <Route path="/nfts/:nftId/buy" exact component={BuyNFT} />
               <Route path="/nfts/:nftId" exact component={ViewNFT} />
-              <Route path="/users/:userid" exact component={User} />
+              <Route path="/users/:userid/nfts" exact component={User} />
               <Route path="/howto" exact component={HowTo} />
           </Switch>
               

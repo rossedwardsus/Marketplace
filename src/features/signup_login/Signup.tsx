@@ -63,28 +63,44 @@ export function Signup() {
 
   return (
     <>
-        email
-        <br/>
         <form onSubmit={handleSubmit((d) => console.log(d))}>
      
             <FormControl style={{minWidth: 420}}>
-                <InputLabel id="demo-simple-select-label">Signup</InputLabel> 
+                <InputLabel id="demo-simple-select-label">Email</InputLabel> 
                 <TextField
                     label="Email"
                     onChange={() => {}}
                     />
             </FormControl>
-            password
+            <br/>
             <br/>
             <FormControl style={{minWidth: 420}}>
-                <InputLabel id="demo-simple-select-label">Login</InputLabel> 
+                <InputLabel id="demo-simple-select-label">Username</InputLabel> 
                 <TextField
-                    label="Multiline"
+                    label=""
                     onChange={() => {}}
                     />
             </FormControl>
             <br/>
-            <button onClick={() => gotoSettings()}>Sign Up</button>
+            <br/>
+            <FormControl style={{minWidth: 420}}>
+                <InputLabel id="demo-simple-select-label">Password</InputLabel> 
+                <TextField
+                    label=""
+                    onChange={() => {}}
+                    />
+            </FormControl>
+            <br/>
+            <br/>
+            <FormControl style={{minWidth: 420}}>
+                <InputLabel id="demo-simple-select-label">Password Again</InputLabel> 
+                <TextField
+                    label=""
+                    onChange={() => {}}
+                    />
+            </FormControl>
+            <br/>
+            <Button onClick={() => gotoSettings()}>Sign Up</Button>
         </form>
     </>
   );
