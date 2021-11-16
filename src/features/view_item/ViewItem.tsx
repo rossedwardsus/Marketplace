@@ -49,7 +49,7 @@ import CollectionsIcon from '@mui/icons-material/Collections';
 
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
-export function ViewNFT() {
+export function ViewItem() {
   const [wasm, setWasm] = useState<any>({})
   const { nftId } = useParams<any>();
 

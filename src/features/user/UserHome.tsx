@@ -51,7 +51,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export function User() {
+export function UserHome() {
   const {userId} = useParams<any>();
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -123,9 +123,9 @@ export function User() {
             <br/>
             chat - User1
             <br/>
-            Users top nfts
+            Users Items
             <br/>
-             {[{id: 12345, userid: "", blockchain_public_address: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any, index: any) =>
+             {[{id: 12345, userid: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any, index: any) =>
               <>
               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <br/>
@@ -141,16 +141,16 @@ export function User() {
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography component="div" variant="h5">
-                            Nft Name<Link to="/users/1234">username{index+1}</Link>
+                            Title<Link to="/users/1234">username{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             Viewed username
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            IPFS Address
+                            Image
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Aseet ID
+                            Description
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             Message - only show if not longer in user

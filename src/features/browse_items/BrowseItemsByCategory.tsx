@@ -49,7 +49,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-export function BrowseItems() {
+export function BrowseItemsByCategory() {
   //const [wasm, setWasm] = useState<any>({})
   const { category } = useParams<any>()
 
@@ -156,10 +156,10 @@ export function BrowseItems() {
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography component="div" variant="h5">
-                            <Link to="/items/1234" style={{ textDecoration: 'none' }}>item{index+1}</Link>
+                            <Link to="/items/1234" style={{ textDecoration: 'none' }}>title{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <Link to="/user/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
+                            <Link to="/users/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             Price

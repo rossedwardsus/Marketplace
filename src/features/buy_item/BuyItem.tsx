@@ -26,7 +26,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 
 
-export function BuyNFT() {
+export function BuyItem() {
   const [open, setOpen] = useState<any>(false)
 
   /*const count = useAppSelector(selectCount);

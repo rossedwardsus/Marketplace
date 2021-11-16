@@ -95,7 +95,7 @@ const ADD_NFT_MUTATION = gql`
   }
 ` 
 
-export function UserAddNFT(props: any): any {
+export function UserAddItem(props: any): any {
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -298,9 +298,8 @@ export function UserAddNFT(props: any): any {
             <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
                       
             <br/>
-              AddNFT
+              Add Item
               <br/>
-              {"algorand" in window == false && <>please install algorand</>}
               <br/>
               Upload image
               <br/>
@@ -387,6 +386,7 @@ export function UserAddNFT(props: any): any {
               />
               <br/>
               <br/>
+              description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <FormControl style={{minWidth: 420}}>
                <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -415,7 +415,7 @@ export function UserAddNFT(props: any): any {
               <br/>
               <br/>
               <Typography>
-                Price Algos ($1)
+                Price or Donation(Make price 0.00)
               </Typography>
               <br/>
               <Controller
@@ -449,7 +449,7 @@ export function UserAddNFT(props: any): any {
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
-                    You are minting an NFT for a total cost of.
+                    You total cost of.
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -461,8 +461,6 @@ export function UserAddNFT(props: any): any {
               </Dialog>
               <br/>
               <br/>
-              Have popup saying are you sure you want to mint this nft?  Confirn Cancel
-               <br/>
               <Button onClick={handleClickOpen} disabled={submitDisabled}>Mint!</Button>
               <Button type="submit" disabled={titleDisabled}>Submit and Mint!</Button>
               <input type="submit" />

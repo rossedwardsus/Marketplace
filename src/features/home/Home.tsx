@@ -27,18 +27,15 @@ export function Home() {
         <br/>
           Home
           <br/>
-          What niftgen is.
+          Welcome to Getridofit
           <br/>
           A few samples
           <br/>
-          Exaplanationofhow touse niftgen
-          <br/>
+           <br/>
           <Link to={"/howto"}>How To</Link>
           <br/>
           <br/>
-          Also some users of niftgen
-          <br/>
-          <Link to={"/nfts/browse"}>Click here to browse</Link>
+          <Link to={"/items/browse"}>Click here to browse</Link>
     </>
   );
 }
