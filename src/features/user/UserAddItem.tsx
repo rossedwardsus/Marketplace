@@ -61,16 +61,17 @@ const useStyles = makeStyles({
 
 
 const schema = z.object({
-    nftName: z.string().nonempty('Name Requiredz'),
+    //nftName: z.string().nonempty('Name Requiredz'),
     //nftName: z.string().refine((val) => !Number.isNaN(parseInt(val, 10)), {
     //  message: "Expected number, received a string"
     //}),
     //nftDescription: z.string().min(1, 'Descriptionz Requiredz'),
-    nftDescription: z.string().nonempty('Descriptionz Requiredz'),
+    itemDescription: z.string().nonempty('Descriptionz Requiredz'),
     //nftDescription: z.string().refine((val) => !Number.isNaN(parseInt(val, 10)), {
     //  message: "Expected number, received a string"
     //}),
-    price: z.number().min(.1),
+    price: z.number().min(1),
+    //price: z.string().nonempty('Descriptionz Requiredz'),
 });
 
 /*schema.safeParse(data, {
@@ -108,9 +109,9 @@ export function UserAddItem(props: any): any {
   const [fileAdded, setFileAdded] = useState<any>(false);
   const [description, setDescription] = useState<any>(false);
   const [titleDisabled, setTitleDisabled] = useState(false);
-  const [descriptionDisabled, setDescriptionDisabled] = useState(true);
-  const [priceDisabled, setPriceDisabled] = useState(true);
-  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [descriptionDisabled, setDescriptionDisabled] = useState(false);
+  const [priceDisabled, setPriceDisabled] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [addNFT] = useMutation(ADD_NFT_MUTATION);
@@ -150,12 +151,13 @@ export function UserAddItem(props: any): any {
     resolver: zodResolver(schema),
     mode: "all", 
     defaultValues: {
-      nftName: "",
+      itemTitle: "",
       checkbox: false
     }
   });
 
   const onSubmit = (data: any) => alert(JSON.stringify(data));
+
   //var formData = new FormData();
   //formData.append('file', files[0]);
 
@@ -332,7 +334,7 @@ export function UserAddItem(props: any): any {
               title(50 characters)
               <br/>
               <Controller
-                name="nftName"
+                name="itemTitle"
                 control={control}
                 render={({ field, formState }) => (
                   
@@ -340,6 +342,7 @@ export function UserAddItem(props: any): any {
                           <InputLabel id="demo-simple-select-label"></InputLabel> 
                           <TextField
                               {...field}
+                              onChange={field.onChange}
                               error={!!formState.errors?.nftName}
                               disabled={titleDisabled}
                               />
@@ -366,7 +369,7 @@ export function UserAddItem(props: any): any {
               description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <Controller
-                name="nftDescription"
+                name="itemDescription"
                 control={control}
                 render={({ field, formState }) => (
                     <FormControl style={{minWidth: 420}}>
@@ -386,7 +389,7 @@ export function UserAddItem(props: any): any {
               />
               <br/>
               <br/>
-              description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
+              category {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <FormControl style={{minWidth: 420}}>
                <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -415,7 +418,7 @@ export function UserAddItem(props: any): any {
               <br/>
               <br/>
               <Typography>
-                Price or Donation(Make price 0.00)
+                Price or Donation(Make price 0)(Min 1)
               </Typography>
               <br/>
               <Controller
@@ -427,11 +430,11 @@ export function UserAddItem(props: any): any {
                     <FormControl style={{width: 120}}>
                         <InputLabel id="demo-simple-select-label"></InputLabel> 
                         <TextField
-                            {...field}
-                            label="Algos"
-                            onChange={(e: any) => field.onChange(parseInt(e.target.value))}
+                            onChange={(e) => field.onChange(parseInt(e.target.value))}
+                            label="Price"
                             error={!!formState.errors?.price}
                             disabled={priceDisabled}
+                            inputRef={field.ref}
                             />
                         {JSON.stringify(formState.errors)}
                     </FormControl>
@@ -462,7 +465,7 @@ export function UserAddItem(props: any): any {
               <br/>
               <br/>
               <Button onClick={handleClickOpen} disabled={submitDisabled}>Mint!</Button>
-              <Button type="submit" disabled={titleDisabled}>Submit and Mint!</Button>
+              <Button type="submit" disabled={titleDisabled}>Submit!</Button>
               <input type="submit" />
         </div>
        </div>
