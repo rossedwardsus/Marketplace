@@ -136,16 +136,10 @@ export function ViewNFT() {
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                       <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5">
-                          Nft Name<Link to="/users/1234">username</Link>
+                          item Name<Link to="/users/1234">username</Link>
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                           Username
-                        </Typography>
-                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                          IPFS Address
-                        </Typography>
-                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                          Asset ID
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                           Message User
@@ -155,8 +149,11 @@ export function ViewNFT() {
                           Price
                         </Typography>
                         <AttachMoneyIcon/><CollectionsIcon/>
-                         <Typography variant="subtitle1" color="text.secondary" component="div">
-                          Tbd
+                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                          Item Description
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                          Location
                         </Typography>
                         <Stack>
                           <Rating 
@@ -170,7 +167,7 @@ export function ViewNFT() {
                         <VisibilityIcon/>views
                         <Grid container spacing={2}>
                           <Grid item xs={2}>
-                            Art
+                            Furniture
                           </Grid>
                         </Grid>
                         <Link to={"/nfts/" + nftId + "/buy"} component={Button}>Buy</Link>
@@ -178,54 +175,7 @@ export function ViewNFT() {
                     </Box>
                   </Box>   
                     <br/>
-                    Comments<CommentIcon/>
-                    <br/>
-                    <Stack>
-                      <Rating 
-                        name="half-rating" 
-                        onChange={() => alert()} 
-                        defaultValue={2.5} 
-                        precision={0.5} 
-                    />
-                      <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
-                    </Stack>
-                    views
-                    <br/>
-                    share
-                    <br/>
-                    <br/>
-                    <br/>
-                   <FormControl style={{minWidth: 500}}>
-                    <InputLabel id="demo-simple-select-label">Add Comment</InputLabel>         
-                    <TextField
-                      label="Add Comment"
-                      multiline
-                      rows={4}
-                      />
-                    </FormControl>
-                    <br/>
-                    Comments 10
-                    <br/>
-                    username/Comment Date
-                    <br/>
-                    <FormControl style={{minWidth: 120}}>
-                      <Paper>
-                        Wow this is a grat nft!
-                      </Paper>
-                    </FormControl>
-                    <br/>
-                    <br/>
-                    username/Comment Date
-                    <br/>
-                    <FormControl style={{minWidth: 120}}>
-                      <Paper>
-                        Wow this is a great nft!
-                      </Paper>
-                    </FormControl>
-                    <br/>
-                    <br/>
-                    <Button>Add Comment</Button>        
-          </div>
+                  </div>
       </div>
      </>
   );

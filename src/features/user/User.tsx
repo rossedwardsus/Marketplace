@@ -11,8 +11,6 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
-
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,7 +18,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -36,10 +33,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 
+
+import { Link, useParams } from "react-router-dom";
+
+import { HeaderMenu } from '../header_menu/HeaderMenu';
+
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
 
-import { Link, useParams } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -49,10 +50,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-export function PublicFeedNFTs() {
-  const [wasm, setWasm] = useState<any>({})
-  const { category } = useParams<any>()
 
+export function User() {
+  const {userId} = useParams<any>();
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -62,7 +62,7 @@ export function PublicFeedNFTs() {
   //const loadWasm = async () => {
   //  try {
   //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-  //    setWasm({wasm});
+      //this.setState({wasm});
   //  } catch(err) {
   //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
   //  }
@@ -74,96 +74,66 @@ export function PublicFeedNFTs() {
 
   //}
 
-  const handleChange = (event: any) => {
-    //setAge(event.target.value);
-  };
+  //useEffect(() => {
 
-  useEffect(() => {
+  //    loadWasm();
 
-      //if ("cardano" in window == false){
-      //    <>please install nami</>}
-      //}else{
-      //    setCardano(window.cardano);
-      //}
-
-
-  }, []);
+  //}, []);
 
   return (
     <>
-      <div style={{width: "100%", height: "150%", borderWidth: "0", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
-          <div style={{width: "20%", height: "100%",borderWidth: 0, borderStyle: "solid", float:"left", display: "inline-block"}}>
-            <br/>
-            <nav>
-              <ul>
-                <li><Link to="/home">Settings</Link></li>
+        <div style={{width: "100%", height: "100%", borderWidth: "5px", borderStyle: "solid", position: "absolute", overflow: "hidden"}}>
+            <div style={{width: "20%", height: "100%",borderWidth: 1, borderStyle: "solid", float:"left", display: "inline-block"}}>
+              <br/>
+              if user is logged in/not logged in
+              <nav>
+                <ul>
+                <li><Link to="/user/settings">Settings</Link></li>
               </ul>
               <ul>
-                <li><Link to="/home">Notifications</Link></li>
+                <li><Link to="/user/notifications">Notifications</Link></li>
               </ul>
               <ul>
-                <li><Link to="/home">My NFT</Link></li>
+                <li><Link to="/user/nfts">My NFT</Link></li>
               </ul>
               <ul>
-                <li><Link to="/home">Add NFT</Link></li>
+                <li><Link to="/user/nfts/add">Add NFT</Link></li>
               </ul>
               <ul>
-                <li><Link to="/home">Chats user 1</Link></li>
+                <li><Link to="/user/chats">Chats user 1</Link></li>
               </ul>
               <ul>
                 <li><Link to="/home">Chats user 2</Link></li>
               </ul>
-            </nav>
+              </nav>
+              <br/>
+            </div>
+            <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
+            Welcome USer1!
             <br/>
-          </div>
-          <div style={{width: "60%", height: "100%", borderWidth: 0, borderStyle: "solid", display: "inline-block"}}>
-         
-          <br/>
-            {"algorand" in window == false && <>please install algorand wallet</>}
+            {userId}
             <br/>
-            hello/browse by category
+            if user is logged in/not logged in
+             <br/>
+            Edit profile
             <br/>
-            sports/art{category}
+            Notifications
             <br/>
-            <Grid container spacing={2}>
-              <Grid item xs={2}>
-                <Link to="/nfts/browse/art" style={{ textDecoration: 'none' }}>Arts</Link> 
-              </Grid>
-              <Grid item xs={2}>
-                <Link to="/nfts/browse/sports" style={{ textDecoration: 'none' }}>Sports</Link>
-              </Grid>
-              <Grid item xs={2}>
-                <Link to="/nfts/browse/misc" style={{ textDecoration: 'none' }}>Misc</Link>
-              </Grid>
-              <Grid item xs={2}>
-                <Link to="/nfts/browse/collectable" style={{ textDecoration: 'none' }}>Collectable</Link>
-              </Grid>
-            </Grid>
+            Chats
             <br/>
-            <FormControl style={{width: 100}}>
-              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={"age"}
-                label="Age"
-                onChange={handleChange}
-              >
-                <MenuItem value={10}>All</MenuItem>
-              </Select>
-            </FormControl>
+            chat - User1
             <br/>
+            Users top nfts
             <br/>
-            <div>
-             {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
-               <>
-               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+             {[{id: 12345, userid: "", blockchain_public_address: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any, index: any) =>
+              <>
+              <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <br/>
-                    <Card>
+                    <Card sx={{ display: 'flex' }}>
                       <br/>
                       <CardMedia
                           component="img"
-                          sx={{ height: 200, width: 200 }}
+                          sx={{ width: 151 }}
                           image={miami_beach}
                           alt="NFT Image"
                         />
@@ -171,38 +141,32 @@ export function PublicFeedNFTs() {
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography component="div" variant="h5">
-                            <Link to="/nfts/1234" style={{ textDecoration: 'none' }}>nft{index+1}</Link>
+                            Nft Name<Link to="/users/1234">username{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <Link to="/users/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
+                            Viewed username
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             IPFS Address
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Asset ID
+                            Aseet ID
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <Link to="/user/chats/1234" style={{ textDecoration: 'none' }}>Message User</Link>
+                            Message - only show if not longer in user
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            tbd
+                            For Sale
                           </Typography>
                         </CardContent>
                       </Box>
                 </Box>
-                <br/>
-                <br/>
-                <br/>
-                </>
-              )}
-          </div>
-         </div>
-       </div>
+              
+               </>
+            )}
+           </div>
+           About user
+        </div>
     </>
   );
 }
-
-//<div style={{display: "grid", gridTemplateRows: "repeat(4, '100px')", gridTemplateColumns: "repeat(3, '1fr')"}}>
-//<div style={{gridColumn: index+1 + "/" + index+1}}>
-           

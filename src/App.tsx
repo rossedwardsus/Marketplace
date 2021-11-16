@@ -13,16 +13,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { HeaderMenu } from './features/header_menu/HeaderMenu';
 
-import { PublicFeedNFTs } from './features/browse_nfts/PublicFeedNFTs';
-import { ViewNFT } from './features/view_nft/ViewNft';
-import { BuyNFT } from './features/buy_nft/BuyNFT';
+import { BrowseItems } from './features/browse_nfts/BrowseItems';
+import { ViewItem } from './features/view_nft/ViewItem';
+import { BuyItem } from './features/buy_item/BuyItem';
 
 import { Signup } from './features/signup_login/Signup';
 import { Login } from './features/signup_login/Login';
 
 import { HowTo } from './features/how_to/HowTo';
 
-import { UserAddNFT } from './features/user/UserAddNFT';
+import { UserAddItem } from './features/user/UserAddItem';
 import { User } from './features/user/User';
 import { UserSettings } from './features/user/UserSettings';
 import { UserNotifications } from './features/user/UserNotifications';
@@ -50,7 +50,7 @@ function App() {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Niftgen
+                Getridofit
               </Typography>
               <Link to={"/howto"} color="inherit" component={Button}>How To</Link>
               <Link to={"/nfts/browse"} color="inherit" component={Button}>Browse</Link>
@@ -67,14 +67,14 @@ function App() {
               <Route path="/login" exact component={Login} />
               <Route path="/user" exact component={User} />
               <Route path="/user/chats/:chatId" exact component={UserChats} />
-              <Route path="/user/nfts/add" exact component={UserAddNFT} />
+              <Route path="/user/items/add" exact component={UserAddItem} />
               <Route path="/user/notifications" exact component={UserNotifications} />
               <Route path="/user/settings" exact component={UserSettings} />
-              <Route path="/nfts/browse/:category" exact component={PublicFeedNFTs} />
-              <Route path="/nfts/browse" exact component={PublicFeedNFTs} />
-              <Route path="/nfts/:nftId/buy" exact component={BuyNFT} />
-              <Route path="/nfts/:nftId" exact component={ViewNFT} />
-              <Route path="/users/:userid/nfts" exact component={User} />
+              <Route path="/items/browse/:category" exact component={BrowseItemsCategory} />
+              <Route path="/items/browse" exact component={BrowseItems} />
+              <Route path="/items/:itemId/buy" exact component={BuyItem} />
+              <Route path="/items/:itemId" exact component={ViewItem} />
+              <Route path="/users/:userid/items" exact component={User} />
               <Route path="/howto" exact component={HowTo} />
           </Switch>
               
