@@ -50,7 +50,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export function PublicFeedNFTs() {
-  const [wasm, setWasm] = useState<any>({})
+  //const [wasm, setWasm] = useState<any>({})
   const { category } = useParams<any>()
 
   /*const count = useAppSelector(selectCount);
@@ -59,20 +59,6 @@ export function PublicFeedNFTs() {
 
   const incrementValue = Number(incrementAmount) || 0;*/
 
-  //const loadWasm = async () => {
-  //  try {
-  //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-  //    setWasm({wasm});
-  //  } catch(err) {
-  //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-  //  }
-  //};
-
-  //loadWasm = () => {
-
-  //    const S = import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js')
-
-  //}
 
   const handleChange = (event: any) => {
     //setAge(event.target.value);
