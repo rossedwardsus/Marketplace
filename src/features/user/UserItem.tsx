@@ -202,45 +202,11 @@ export function UserItem() {
                     </Box>
                   </Box>   
                     <br/>
-                      Payment - {item.price_option}
-                      <br/>
-                      {item.price_option == "mo" ?
-                        <FormControl style={{width: 120}}>
-                            <InputLabel id="demo-simple-select-label">Offer</InputLabel> 
-                            <TextField
-                                onChange={(e) => {}}
-                                label="Price"
-                                />
-                        </FormControl> : <>{item.price}</>
-
-                      }
-               
+                    <Button onClick={() => history.push("/items/" + item.itemId)}>Update</Button>
                     <br/>
-                    <Button onClick={() => history.push("/items/" + item.itemId)}>Buy</Button>
-                    <br/>
-                    Users other items
-                    <div>
-                      <ImageList className={classes.imageList} cols={2.5}>
-                        {itemData.map((item) => (
-                         
-                          <ImageListItem key={item.img}>
-
-                            <img onClick={() => {history.push("/items/" + item.itemId)}} src={item.img} alt={item.title} />
-                            <ImageListItemBar
-                              title={item.title}
-                              classes={{
-                                root: classes.titleBar,
-                                title: classes.title,
-                              }}
-                              actionIcon={
-                                <IconButton aria-label={`star ${item.title}`}>
-                                  <StarBorderIcon className={classes.title} />
-                                </IconButton>
-                              }
-                            />
-                          </ImageListItem>
-                        ))}
-                      </ImageList>
+                     messages
+                     <br/>
+                     offers
                    </div>
            </div>
       </div>

@@ -458,7 +458,7 @@ export function UserAddItem(props: any): any {
               </FormControl>
               <br/>
               <Typography>
-                Price or Donation(Make price 0 for donation)(Min 1)/Make an offer
+                Price or Donation(Make price 0 for donation)(Min 1)/Make an offer- venmo - cash
               </Typography>
               <br/>
               <FormControl component="fieldset">

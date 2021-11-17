@@ -113,7 +113,9 @@ export function UserPublic() {
             <br/>
             {userId}
             <br/>
-            Location
+            I am moving and need to get rid of my stuff
+            <br/>
+            Location - lost angeles
             <br/>
             Image
             <br/>

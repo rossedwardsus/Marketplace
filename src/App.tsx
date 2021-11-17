@@ -57,12 +57,13 @@ function App() {
                 Getridofit
               </Typography>
               <Link to={"/howto"} color="inherit" component={Button}>How To</Link>
-              <Link to={"/items/browse"} color="inherit" component={Button}>Browse</Link>
+              <Link to={"/items/browse"} color="inherit" component={Button}>Items</Link>
               <Link to={"/user"} color="inherit" component={Button}>User Home</Link>
               <Link to={"/signup"} color="inherit" component={Button}>Sign Up</Link>
               <Link to={"/login"} color="inherit" component={Button}>Login</Link>
               <Link to={"/user/feed"} color="inherit" component={Button}>Feed</Link>
               <Link to={"/user/items/add"} color="inherit" component={Button}>Add Item</Link>
+              <Link to={"/requests"} color="inherit" component={Button}>Requests</Link>
             </Toolbar>
           </AppBar>
         
@@ -83,6 +84,8 @@ function App() {
               <Route path="/items/:itemId/buy" exact component={BuyItem} />
               <Route path="/items/:itemId" exact component={ViewItem} />
               <Route path="/howto" exact component={HowTo} />
+              <Route path="/requests" exact component={HowTo} />
+              <Route path="/requests/requestId" exact component={HowTo} />
           </Switch>
               
       
