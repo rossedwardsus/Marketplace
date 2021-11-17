@@ -38,8 +38,10 @@ import Box from '@mui/material/Box';
 
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
+import SidebarMenu from '../menus/SidebarMenu';
 
-import { Link, useParams } from "react-router-dom";
+
+import { Link, useParams, useHistory } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -52,6 +54,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export function BrowseItems() {
   //const [wasm, setWasm] = useState<any>({})
   const { category } = useParams<any>()
+  const history  = useHistory();
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -160,7 +163,7 @@ export function BrowseItems() {
                         <br/>
                         <Card>
                           <br/>
-                          <div className="cardWrapper" onClick={() => alert()}>
+                          <div className="cardWrapper" onClick={() => history.push("/items/1")}>
                             <CardMedia
                                 component="img"
                                 sx={{ height: 100, width: 100 }}

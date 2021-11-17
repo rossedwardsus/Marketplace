@@ -13,7 +13,7 @@ import styles from './Counter.module.css';*/
 
 //import { HeaderMenu } from '../header_menu/HeaderMenu';
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
 
 const itemData = [
     {
+      itemId: 1,
       img: miami_beach,
       title: 'item1',
       user: 'user1',
@@ -96,6 +97,8 @@ const itemData = [
 export function ViewItem() {
   const classes = useStyles();
   const { itemId } = useParams<any>();
+  const history = useHistory();
+  const [item, setItem] = useState({itemId: 1, userId: 1, itemTitle: "it", itemDescription: "id", shippingOption: "set", price_option: "set", price: 10});
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -106,13 +109,6 @@ export function ViewItem() {
 
   useEffect(() => {
 
-      //loadWasm();
-
-      //if ("cardano" in window == false){
-      //    <>please install nami</>}
-      //}else{
-      //    setCardano(window.cardano);
-      //}
 
 
   }, []);
@@ -202,10 +198,25 @@ export function ViewItem() {
                             Furniture
                           </Grid>
                         </Grid>
-                        <Link to={"/items/" + itemId + "/buy"} component={Button}>Buy</Link>
                       </CardContent>
                     </Box>
                   </Box>   
+                    <br/>
+                      Payment - {item.price_option}
+                      <br/>
+                      {item.price_option == "mo" ?
+                        <FormControl style={{width: 120}}>
+                            <InputLabel id="demo-simple-select-label">Offer</InputLabel> 
+                            <TextField
+                                onChange={(e) => {}}
+                                label="Price"
+                                />
+                        </FormControl> : <>{item.price}</>
+
+                      }
+               
+                    <br/>
+                    <Button onClick={() => history.push("/items/" + item.itemId)}>Buy</Button>
                     <br/>
                     Users other items
                     <div>
@@ -214,7 +225,7 @@ export function ViewItem() {
                          
                           <ImageListItem key={item.img}>
 
-                            <img onClick={() => {alert("item.itemId")}} src={item.img} alt={item.title} />
+                            <img onClick={() => {history.push("/items/" + item.itemId)}} src={item.img} alt={item.title} />
                             <ImageListItemBar
                               title={item.title}
                               classes={{

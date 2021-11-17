@@ -34,7 +34,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 //import { HeaderMenu } from '../header_menu/HeaderMenu';
 
@@ -56,23 +56,12 @@ export function UserHome() {
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
+  const hist
 
   const incrementValue = Number(incrementAmount) || 0;*/
 
-  //const loadWasm = async () => {
-  //  try {
-  //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-      //this.setState({wasm});
-  //  } catch(err) {
-  //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-  //  }
-  //};
+  const history = useHistory();
 
-  //loadWasm = () => {
-
-  //    const S = import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js')
-
-  //}
 
   //useEffect(() => {
 
@@ -125,7 +114,11 @@ export function UserHome() {
             <br/>
             chat - User1
             <br/>
-            Users Items- views - messages
+            Users items trying to purchase
+            <br/>
+            <br/>
+            <br/>
+            Users Items for sale- views - messages
             <br/>
              {[{id: 12345, userid: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any, index: any) =>
               <>
@@ -133,13 +126,18 @@ export function UserHome() {
                     <br/>
                     <Card sx={{ display: 'flex' }}>
                       <br/>
-                      <CardMedia
-                          component="img"
-                          sx={{ width: 151 }}
-                          image={miami_beach}
-                          alt="NFT Image"
-                        />
-                     </Card>
+                       <div className="cardWrapper" onClick={() => history.push("/user/items/1")}>
+                            
+                            <CardMedia
+                              component="img"
+                              sx={{ width: 151 }}
+                              image={miami_beach}
+                              alt="NFT Image"
+                            />
+
+                        </div>
+                    </Card>
+
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography component="div" variant="h5">

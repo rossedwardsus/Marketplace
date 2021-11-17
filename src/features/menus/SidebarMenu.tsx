@@ -13,7 +13,7 @@ import styles from './Counter.module.css';*/
 
 import { Link } from "react-router-dom";
 
-export function SidebarMenu() {
+export default function SidebarMenu() {
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -21,7 +21,7 @@ export function SidebarMenu() {
   const incrementValue = Number(incrementAmount) || 0;*/
 
   return (
-    <div style={{width: "20%", height: "100%",borderWidth: 0, borderStyle: "solid", float:"left", display: "inline-block"}}>
+    <div style={{width: "100%", height: "100%",borderWidth: 0, borderStyle: "solid", float:"left", display: "inline-block"}}>
       <br/>
       <nav>
         <ul>

@@ -24,6 +24,8 @@ import { Login } from './features/signup_login/Login';
 import { HowTo } from './features/how_to/HowTo';
 
 import { UserAddItem } from './features/user/UserAddItem';
+import { UserAddItemCheckout } from './features/user/UserAddItemCheckout';
+import { UserItem } from './features/user/UserItem';
 import { UserHome } from './features/user/UserHome';
 import { UserPublic } from './features/user/UserPublic';
 import { UserSettings } from './features/user/UserSettings';
@@ -71,6 +73,8 @@ function App() {
               <Route path="/user" exact component={UserHome} />
               <Route path="/user/chats/:chatId" exact component={UserChats} />
               <Route path="/user/items/add" exact component={UserAddItem} />
+              <Route path="/user/items/add/checkout" exact component={UserAddItemCheckout} />
+              <Route path="/user/items/:itemId" exact component={UserItem} />
               <Route path="/user/notifications" exact component={UserNotifications} />
               <Route path="/user/settings" exact component={UserSettings} />
               <Route path="/user/:userId" exact component={UserPublic} />

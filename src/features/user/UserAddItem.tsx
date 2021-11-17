@@ -27,7 +27,11 @@ import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Dialog from '@mui/material/Dialog';
@@ -37,7 +41,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Chip from '@mui/material/Chip';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { SidebarMenu } from '../menus/SidebarMenu';
+
+import SidebarMenu from '../menus/SidebarMenu';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -116,6 +121,7 @@ export function UserAddItem(props: any): any {
   const [open, setOpen] = React.useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [addNFT] = useMutation(ADD_NFT_MUTATION);
+  const [selectedPriceOrBestoffer, setSelectedPriceOrBestOffer] = useState("");
   
   //addTodo(
   //       {
@@ -220,6 +226,12 @@ export function UserAddItem(props: any): any {
     </div>
   ));
 
+
+  const changePriceOrBestOffer = (e: any) => {
+
+      setSelectedPriceOrBestOffer(e.target.value);
+
+  }
 
   //const loadWasm = async () => {
   //  try {
@@ -333,7 +345,7 @@ export function UserAddItem(props: any): any {
                   />
               </FormControl>
               <br/>
-              title(50 characters)
+              Item Title(50 characters)
               <br/>
               <Controller
                 name="itemTitle"
@@ -368,7 +380,7 @@ export function UserAddItem(props: any): any {
                 </Select>
               </FormControl>
               <br/>
-              description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
+              Item Description {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <Controller
                 name="itemDescription"
@@ -391,7 +403,7 @@ export function UserAddItem(props: any): any {
               />
               <br/>
               <br/>
-              category {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
+              Item Category {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <FormControl style={{minWidth: 420}}>
                <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -410,18 +422,19 @@ export function UserAddItem(props: any): any {
                     </Box>
                   )}
                 >
-                  <MenuItem value={"Art"}>Art</MenuItem>
-                  <MenuItem value={"Music"}>Music</MenuItem>
-                  <MenuItem value={"Sports"}>Sports</MenuItem>
-                  <MenuItem value={"Collectable"}>Collectable</MenuItem>
+                  <MenuItem value={"furniture"}>Furniture</MenuItem>
+                  <MenuItem value={"music"}>Clothing</MenuItem>
+                  <MenuItem value={"sports_equipment"}>Sports Equipment</MenuItem>
+                  <MenuItem value={"collectables"}>Collectables</MenuItem>
                 </Select>
               </FormControl>
               
               <br/>
-              delivery option {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
+              <br/>
+              Select a Shipping option (Buyer has to pickup/I will ship to the buyer-buyer has to pay){description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
               <br/>
               <FormControl style={{minWidth: 420}}>
-               <InputLabel id="demo-simple-select-label"></InputLabel>
+               <InputLabel id="demo-simple-select-label">Shipping</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -437,7 +450,7 @@ export function UserAddItem(props: any): any {
                     </Box>
                   )}
                 >
-                  <MenuItem value={"local_only"}>Local Only</MenuItem>
+                  <MenuItem value={"local_only"}>Local Only/Pickup</MenuItem>
                   <MenuItem value={"delivery"}>Delivery</MenuItem>
                   <MenuItem value={"Sports"}>Local and delivery</MenuItem>
                   <MenuItem value={"Collectable"}>Collectable</MenuItem>
@@ -445,28 +458,45 @@ export function UserAddItem(props: any): any {
               </FormControl>
               <br/>
               <Typography>
-                Price or Donation(Make price 0)(Min 1)/Make an offer
+                Price or Donation(Make price 0 for donation)(Min 1)/Make an offer
               </Typography>
               <br/>
-              <Controller
-                name="price"
-                control={control}
-                rules={{ required: "Price required" }}
-                render={({ field, formState }) => (
-                  
-                    <FormControl style={{width: 120}}>
-                        <InputLabel id="demo-simple-select-label"></InputLabel> 
-                        <TextField
-                            onChange={(e) => field.onChange(parseInt(e.target.value))}
-                            label="Price"
-                            error={!!formState.errors?.price}
-                            disabled={priceDisabled}
-                            inputRef={field.ref}
-                            />
-                        {JSON.stringify(formState.errors)}
-                    </FormControl>
-                )}
-              />
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Price or Best Offer</FormLabel>
+                <RadioGroup
+                  row
+                  aria-label="gender"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                  onChange={changePriceOrBestOffer}
+                >
+                  <FormControlLabel value="price" control={<Radio />} label="Price" />
+                  <FormControlLabel value="best_offer" control={<Radio />} label="Best Offer" />
+                  <FormControlLabel value="other" control={<Radio />} label="Other" />
+                </RadioGroup>
+              </FormControl>
+              <br/>
+              {selectedPriceOrBestoffer == "price" &&
+                  <Controller
+                    name="price"
+                    control={control}
+                    rules={{ required: "Price required" }}
+                    render={({ field, formState }) => (
+                      
+                        <FormControl style={{width: 120}}>
+                            <InputLabel id="demo-simple-select-label"></InputLabel> 
+                            <TextField
+                                onChange={(e) => field.onChange(parseInt(e.target.value))}
+                                label="Price"
+                                error={!!formState.errors?.price}
+                                disabled={priceDisabled}
+                                inputRef={field.ref}
+                                />
+                            {JSON.stringify(formState.errors)}
+                        </FormControl>
+                    )}
+                  />
+              }
               <br/>
               <Dialog
                 open={open}
