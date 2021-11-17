@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../menus/HeaderMenu';
 
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -102,7 +102,7 @@ export function BrowseItems() {
             </nav>
             <br/>
           </div>
-          <div style={{width: "60%", height: "100%", borderWidth: 0, borderStyle: "solid", display: "inline-block"}}>
+          <div style={{width: "80%", height: "100%", borderWidth: 0, borderStyle: "solid", display: "inline-block"}}>
          
           <br/>
             <br/>
@@ -126,64 +126,82 @@ export function BrowseItems() {
             </Grid>
             <br/>
             <FormControl style={{width: 100}}>
-              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+              <InputLabel id="demo-simple-select-label">Location Filter</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={"age"}
-                label="Age"
+                label="Location"
                 onChange={handleChange}
               >
-                <MenuItem value={10}>All</MenuItem>
+                <MenuItem value={10}>Local</MenuItem>
               </Select>
             </FormControl>
             <br/>
+            <FormControl style={{width: 100}}>
+              <InputLabel id="demo-simple-select-label">Price Filter</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={"age"}
+                label="Location"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>Free</MenuItem>
+                <MenuItem value={10}>1-10</MenuItem>
+              </Select>
+            </FormControl>
             <br/>
-            <div>
-             {[{"nftName": "nftName1"}, {"nftName": "nftName2"}].map((nft: any, index: any) =>
-               <>
-               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                    <br/>
-                    <Card>
-                      <br/>
-                      <CardMedia
-                          component="img"
-                          sx={{ height: 200, width: 200 }}
-                          image={miami_beach}
-                          alt="NFT Image"
-                        />
-                     </Card>
-                      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                          <Typography component="div" variant="h5">
-                            <Link to="/items/1234" style={{ textDecoration: 'none' }}>item{index+1}</Link>
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <Link to="/user/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Price
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Category
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <Link to="/user/chats/1234" style={{ textDecoration: 'none' }}>Message User</Link>
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" component="div">
-                            tbd
-                          </Typography>
-                        </CardContent>
-                      </Box>
-                </Box>
+            <Grid container spacing={2}>
+              
+                 {[{"itemName": "nftName1"}, {"itemUser": "nftName2"}].map((nft: any, index: any) =>
+                   <Grid item xs={4}>
+                   <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <br/>
+                        <Card>
+                          <br/>
+                          <div className="cardWrapper" onClick={() => alert()}>
+                            <CardMedia
+                                component="img"
+                                sx={{ height: 100, width: 100 }}
+                                image={miami_beach}
+                                alt="NFT Image"
+                              />
+                          </div>
+                           </Card>
+
+                          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flex: '1 0 auto' }}>
+                              <Typography component="div" variant="h5">
+                                <Link to="/items/1234" style={{ textDecoration: 'none' }}>item{index+1}</Link>
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Link to="/user/1234" style={{ textDecoration: 'none' }}>username{index+1}</Link>
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" component="div">
+                                Price
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" component="div">
+                                Category
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Link to="/user/chats/1234" style={{ textDecoration: 'none' }}>Message User</Link>
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" component="div">
+                                tbd
+                              </Typography>
+                            </CardContent>
+                          </Box>
+                    </Box>
                 <br/>
                 <br/>
                 <br/>
-                </>
+                </Grid>
               )}
+              
+            </Grid>
           </div>
          </div>
-       </div>
     </>
   );
 }

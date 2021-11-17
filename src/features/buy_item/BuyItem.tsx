@@ -11,7 +11,9 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
+
+import { Link, useParams } from "react-router-dom";
 
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
@@ -27,7 +29,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 
 export function BuyItem() {
-  const [open, setOpen] = useState<any>(false)
+  const [open, setOpen] = useState<any>(false);
+  const { itemId } = useParams<any>();
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -70,7 +73,7 @@ export function BuyItem() {
                 Preview your purchase
                 <br/>
                 <br/>
-                nftName
+                itemName
                 <br/>
                 cost
                 <br/>
@@ -81,15 +84,14 @@ export function BuyItem() {
                   aria-describedby="alert-dialog-description"
                 >
                   <DialogTitle id="alert-dialog-title">
-                      Mint NFT
+                      Buy item
                     </DialogTitle>
                     <DialogContent>
                       <DialogContentText id="alert-dialog-description">
-                        You are minting an NFT for a total cost of.
+                        
+                        Item cost is $10
                         <br/>
-                        NFT cost is $10
-                        <br/>
-                        NiftGen recives $1
+                        Getridofit recives $1
                         <br/>
                         Total cost is $11
                       </DialogContentText>

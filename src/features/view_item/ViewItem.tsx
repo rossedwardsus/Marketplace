@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import { Link, useParams } from "react-router-dom";
 
@@ -41,17 +41,61 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
+//import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+
 import MessageIcon from '@mui/icons-material/Message';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CommentIcon from '@mui/icons-material/Comment';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CollectionsIcon from '@mui/icons-material/Collections';
 
+import { makeStyles } from '@material-ui/core/styles';
+
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  imageList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+}));
+
+
+const itemData = [
+    {
+      img: miami_beach,
+      title: 'item1',
+      user: 'user1',
+    },
+    {
+      img: miami_beach,
+      title: 'item1',
+      user: 'user1',
+    },
+  ];
+
 export function ViewItem() {
-  const [wasm, setWasm] = useState<any>({})
-  const { nftId } = useParams<any>();
+  const classes = useStyles();
+  const { itemId } = useParams<any>();
 
   /*const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -59,20 +103,6 @@ export function ViewItem() {
 
   const incrementValue = Number(incrementAmount) || 0;*/
 
-  //const loadWasm = async () => {
-  //  try {
-  //    const wasm = await import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js');
-  //    setWasm({wasm});
-  //  } catch(err) {
-  //    console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-  //  }
-  //};
-
-  //loadWasm = () => {
-
-  //    const S = import('@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js')
-
-  //}
 
   useEffect(() => {
 
@@ -118,9 +148,8 @@ export function ViewItem() {
             <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
         
               <br/>
-              {"cardano" in window == false && <>please install algorand</>}
               <br/>
-              View NFT
+              View Item
               <br/>
               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                   <br/>
@@ -155,6 +184,9 @@ export function ViewItem() {
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                           Location
                         </Typography>
+                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                          Delivery - Local only/Delivery
+                        </Typography>
                         <Stack>
                           <Rating 
                             name="half-rating" 
@@ -170,12 +202,36 @@ export function ViewItem() {
                             Furniture
                           </Grid>
                         </Grid>
-                        <Link to={"/nfts/" + nftId + "/buy"} component={Button}>Buy</Link>
+                        <Link to={"/items/" + itemId + "/buy"} component={Button}>Buy</Link>
                       </CardContent>
                     </Box>
                   </Box>   
                     <br/>
-                  </div>
+                    Users other items
+                    <div>
+                      <ImageList className={classes.imageList} cols={2.5}>
+                        {itemData.map((item) => (
+                         
+                          <ImageListItem key={item.img}>
+
+                            <img onClick={() => {alert("item.itemId")}} src={item.img} alt={item.title} />
+                            <ImageListItemBar
+                              title={item.title}
+                              classes={{
+                                root: classes.titleBar,
+                                title: classes.title,
+                              }}
+                              actionIcon={
+                                <IconButton aria-label={`star ${item.title}`}>
+                                  <StarBorderIcon className={classes.title} />
+                                </IconButton>
+                              }
+                            />
+                          </ImageListItem>
+                        ))}
+                      </ImageList>
+                   </div>
+           </div>
       </div>
      </>
   );

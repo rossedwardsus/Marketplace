@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';

@@ -11,7 +11,7 @@ import React, { useState, useEffect } from 'react';
 } from './counterSlice';
 import styles from './Counter.module.css';*/
 
-import { HeaderMenu } from '../../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../../header_menu/HeaderMenu';
 
 
 

@@ -36,7 +36,7 @@ import Box from '@mui/material/Box';
 
 import { Link, useParams } from "react-router-dom";
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
@@ -113,6 +113,8 @@ export function UserHome() {
             <br/>
             {userId}
             <br/>
+            Feed
+            <br/>
             if user is logged in/not logged in
              <br/>
             Edit profile
@@ -123,7 +125,7 @@ export function UserHome() {
             <br/>
             chat - User1
             <br/>
-            Users Items
+            Users Items- views - messages
             <br/>
              {[{id: 12345, userid: "", username: "12345", description: "", cost: "", category: "", link: "", likes: "", rating: "", added_datetime: "", nftName: "nftName"}, {nftName: "nftName"}].map((nft: any, index: any) =>
               <>
@@ -144,7 +146,7 @@ export function UserHome() {
                             Title<Link to="/users/1234">username{index+1}</Link>
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Viewed username
+                            username
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
                             Image
@@ -153,10 +155,13 @@ export function UserHome() {
                             Description
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Message - only show if not longer in user
+                            Category
                           </Typography>
                           <Typography variant="subtitle1" color="text.secondary" component="div">
-                            For Sale
+                            Price
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" component="div">
+                            Edit
                           </Typography>
                         </CardContent>
                       </Box>

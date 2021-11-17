@@ -36,7 +36,7 @@ import Box from '@mui/material/Box';
 
 import { Link, useParams } from "react-router-dom";
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
@@ -112,6 +112,10 @@ export function UserPublic() {
             Welcome USer1!
             <br/>
             {userId}
+            <br/>
+            Location
+            <br/>
+            Image
             <br/>
             if user is logged in/not logged in
              <br/>

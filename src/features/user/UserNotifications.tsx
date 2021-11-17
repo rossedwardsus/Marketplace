@@ -13,7 +13,7 @@ import styles from './Counter.module.css';*/
 
 import { Link, useParams } from "react-router-dom";
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 import Grid from '@mui/material/Grid';
 
@@ -81,7 +81,7 @@ export function UserNotifications() {
               <br/>
               <Grid container spacing={2}>
                 <Grid item xs={2}>
-                  user1 has left a comment
+                  user1 has messaged you regarding item1
                 </Grid>
                 <Grid item xs={2}>
                   user2

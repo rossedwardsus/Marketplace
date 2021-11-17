@@ -13,7 +13,7 @@ import styles from './Counter.module.css';*/
 
 import { Link, useParams } from "react-router-dom";
 
-import { HeaderMenu } from '../header_menu/HeaderMenu';
+//import { HeaderMenu } from '../header_menu/HeaderMenu';
 
 export function UserSettings() {
   const {userId} = useParams<any>();
@@ -52,7 +52,7 @@ export function UserSettings() {
       <br/>
       notification settings
       <br/>
-      some likes an nft
+      be notified for furniture
     </>
   );
 }

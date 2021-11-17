@@ -37,6 +37,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Chip from '@mui/material/Chip';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { SidebarMenu } from '../menus/SidebarMenu';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -296,6 +297,7 @@ export function UserAddItem(props: any): any {
               </ul>
               </nav>
               <br/>
+              <SidebarMenu/>
             </div>
             <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
                       
@@ -371,7 +373,7 @@ export function UserAddItem(props: any): any {
               <Controller
                 name="itemDescription"
                 control={control}
-                render={({ field, formState }) => (
+                render={({ field, fieldState, formState }) => (
                     <FormControl style={{minWidth: 420}}>
                       <InputLabel id="demo-simple-select-label"></InputLabel>
                       <TextField
@@ -382,7 +384,7 @@ export function UserAddItem(props: any): any {
                           error={!!formState.errors?.nftDescription}
                           disabled={descriptionDisabled}
                           />
-                      {JSON.stringify(formState.errors)}
+                      {JSON.stringify(formState.errors)}{JSON.stringify(fieldState)}
                     </FormControl>
                 )}
                 defaultValue=""
@@ -416,9 +418,34 @@ export function UserAddItem(props: any): any {
               </FormControl>
               
               <br/>
+              delivery option {description.length == null ? <>(200 characters left)</> : <>({200 - description.length} characters left)</>}
+              <br/>
+              <FormControl style={{minWidth: 420}}>
+               <InputLabel id="demo-simple-select-label"></InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  multiple
+                  value={selectedCategories}
+                  onChange={handleChange}
+                  input={<OutlinedInput id="select-multiple-chip" />}
+                  renderValue={(selected: any) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                      {selected.map((value: any) => (
+                        <Chip key={value} label={value} />
+                      ))}
+                    </Box>
+                  )}
+                >
+                  <MenuItem value={"local_only"}>Local Only</MenuItem>
+                  <MenuItem value={"delivery"}>Delivery</MenuItem>
+                  <MenuItem value={"Sports"}>Local and delivery</MenuItem>
+                  <MenuItem value={"Collectable"}>Collectable</MenuItem>
+                </Select>
+              </FormControl>
               <br/>
               <Typography>
-                Price or Donation(Make price 0)(Min 1)
+                Price or Donation(Make price 0)(Min 1)/Make an offer
               </Typography>
               <br/>
               <Controller

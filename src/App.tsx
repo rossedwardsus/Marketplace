@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { HeaderMenu } from './features/header_menu/HeaderMenu';
+//import { HeaderMenu } from './features/header_menu/HeaderMenu';
 
 import { BrowseItems } from './features/browse_items/BrowseItems';
 import { BrowseItemsByCategory } from './features/browse_items/BrowseItemsByCategory';
@@ -59,6 +59,7 @@ function App() {
               <Link to={"/user"} color="inherit" component={Button}>User Home</Link>
               <Link to={"/signup"} color="inherit" component={Button}>Sign Up</Link>
               <Link to={"/login"} color="inherit" component={Button}>Login</Link>
+              <Link to={"/user/feed"} color="inherit" component={Button}>Feed</Link>
               <Link to={"/user/items/add"} color="inherit" component={Button}>Add Item</Link>
             </Toolbar>
           </AppBar>
