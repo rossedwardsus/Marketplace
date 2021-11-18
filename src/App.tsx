@@ -25,12 +25,17 @@ import { HowTo } from './features/how_to/HowTo';
 
 import { UserAddItem } from './features/user/UserAddItem';
 import { UserAddItemCheckout } from './features/user/UserAddItemCheckout';
+import { UserAddRequest } from './features/user/UserAddRequest';
 import { UserItem } from './features/user/UserItem';
 import { UserHome } from './features/user/UserHome';
 import { UserPublic } from './features/user/UserPublic';
 import { UserSettings } from './features/user/UserSettings';
 import { UserNotifications } from './features/user/UserNotifications';
 import { UserChats } from './features/user/UserChats';
+
+import { RequestedItems } from './features/requested_items/RequestedItems';
+import { RequestedItemsByCategory } from './features/requested_items/RequestedItemsByCategory';
+import { RequestedItem } from './features/requested_items/RequestedItem';
 
 import Gallery from './Gallery_light_background.png';
 import Marketplace from './Marketplace_light_background.png';
@@ -63,7 +68,8 @@ function App() {
               <Link to={"/login"} color="inherit" component={Button}>Login</Link>
               <Link to={"/user/feed"} color="inherit" component={Button}>Feed</Link>
               <Link to={"/user/items/add"} color="inherit" component={Button}>Add Item</Link>
-              <Link to={"/requests"} color="inherit" component={Button}>Requests</Link>
+              <Link to={"/user/requests/add"} color="inherit" component={Button}>Add Request</Link>
+              <Link to={"/items/requests"} color="inherit" component={Button}>Requested Items</Link>
             </Toolbar>
           </AppBar>
         
@@ -75,17 +81,19 @@ function App() {
               <Route path="/user/chats/:chatId" exact component={UserChats} />
               <Route path="/user/items/add" exact component={UserAddItem} />
               <Route path="/user/items/add/checkout" exact component={UserAddItemCheckout} />
+              <Route path="/user/requests/add" exact component={UserAddRequest} />
               <Route path="/user/items/:itemId" exact component={UserItem} />
               <Route path="/user/notifications" exact component={UserNotifications} />
               <Route path="/user/settings" exact component={UserSettings} />
               <Route path="/user/:userId" exact component={UserPublic} />
               <Route path="/items/browse/:category" exact component={BrowseItemsByCategory} />
               <Route path="/items/browse" exact component={BrowseItems} />
+              <Route path="/items/requests" exact component={RequestedItems} />
+              <Route path="/items/requests" exact component={RequestedItems} />
+              <Route path="/items/requests/:category" exact component={RequestedItemsByCategory} />
               <Route path="/items/:itemId/buy" exact component={BuyItem} />
               <Route path="/items/:itemId" exact component={ViewItem} />
               <Route path="/howto" exact component={HowTo} />
-              <Route path="/requests" exact component={HowTo} />
-              <Route path="/requests/requestId" exact component={HowTo} />
           </Switch>
               
       

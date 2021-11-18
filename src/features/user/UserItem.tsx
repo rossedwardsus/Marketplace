@@ -207,7 +207,6 @@ export function UserItem() {
                      messages
                      <br/>
                      offers
-                   </div>
            </div>
       </div>
      </>

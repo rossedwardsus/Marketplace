@@ -37,6 +37,7 @@ import Box from '@mui/material/Box';
 import { Link, useParams, useHistory } from "react-router-dom";
 
 //import { HeaderMenu } from '../header_menu/HeaderMenu';
+import SidebarMenu from '../menus/SidebarMenu';
 
 import miami_beach from '../../Miami_Beach_Marina.jpg'
 
@@ -83,10 +84,10 @@ export function UserHome() {
                 <li><Link to="/user/notifications">Notifications</Link></li>
               </ul>
               <ul>
-                <li><Link to="/user/nfts">My NFT</Link></li>
+                <li><Link to="/user/nfts">My Items</Link></li>
               </ul>
               <ul>
-                <li><Link to="/user/nfts/add">Add NFT</Link></li>
+                <li><Link to="/user/nfts/add">Add Item</Link></li>
               </ul>
               <ul>
                 <li><Link to="/user/chats">Chats user 1</Link></li>
@@ -96,6 +97,8 @@ export function UserHome() {
               </ul>
               </nav>
               <br/>
+              <SidebarMenu />
+              <br/>
             </div>
             <div style={{width: "60%", height: "100%", borderWidth: 1, borderStyle: "solid", display: "inline-block"}}>
             Welcome USer1!
@@ -103,6 +106,10 @@ export function UserHome() {
             {userId}
             <br/>
             Feed
+            <br/>
+            Your for sale items
+            <br/>
+            Your requested items
             <br/>
             if user is logged in/not logged in
              <br/>
